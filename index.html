@@ -1,571 +1,579 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Мини-тест: Эксперт, Вещатель или Продавец?</title>
-  <style>
-    :root{
-      --bg:#f6f6f4;
-      --card:#ffffff;
-      --text:#161616;
-      --muted:#6b6b6b;
-      --line:#e7e7e3;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 шагов от блога-хобби к 150 000-300 000 в месяц | Борис Ходаков</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      /* Нейтральный “не-едкий” акцент вместо чёрного */
-      --accent:#2a2f36;         /* тёмный графит */
-      --accent2:#3b4652;        /* чуть светлее */
-      --accentSoft:#eef1f4;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
 
-      --shadow: 0 12px 30px rgba(0,0,0,.06);
-      --radius: 18px;
-      --radius2: 14px;
-      --max: 860px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, #ffffff 0%, var(--bg) 55%, #f3f3ef 100%);
-      color:var(--text);
-      line-height:1.45;
-    }
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 56px}
-    header{margin-bottom:16px}
-    .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      font-size:13px; color:var(--muted);
-      padding:6px 10px; border:1px solid var(--line); border-radius:999px;
-      background:rgba(255,255,255,.65);
-      width:fit-content;
-    }
-    h1{
-      font-size: clamp(22px, 2.8vw, 34px);
-      margin:10px 0 0;
-      letter-spacing:-0.02em;
-    }
-    .sub{
-      margin:10px 0 0;
-      color:var(--muted);
-      max-width:70ch;
-    }
+        /* Header/Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3d6b 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:18px;
-    }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
 
-    /* Блоки */
-    .block{
-      margin-top:14px;
-      border-top:1px solid var(--line);
-      padding-top:14px;
-    }
-    .block:first-child{border-top:0; padding-top:0}
-    .block-title{
-      margin:0 0 10px;
-      font-size:14px;
-      color:var(--muted);
-      letter-spacing:.02em;
-      text-transform:uppercase;
-    }
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
 
-    /* Вопросы */
-    .q{
-      border:1px solid var(--line);
-      border-radius:var(--radius2);
-      padding:14px;
-      background:#fcfcfb;
-      margin-top:12px;
-    }
-    .q:first-child{margin-top:0}
-    .q-title{
-      font-weight:650;
-      margin:0 0 10px;
-    }
-    .opts{display:grid; gap:10px}
-    .opt{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px 12px;
-      border:1px solid var(--line);
-      border-radius:var(--radius2);
-      background:#fff;
-      cursor:pointer;
-      transition:.12s ease;
-      user-select:none;
-    }
-    .opt:hover{transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.05)}
-    .opt input{margin-top:2px}
-    .opt.selected{
-      border-color: color-mix(in srgb, var(--accent) 24%, var(--line));
-      box-shadow: 0 10px 20px rgba(0,0,0,.06);
-    }
+        .hero .description {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
 
-    .actions{
-      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
-      margin-top:16px;
-      border-top:1px solid var(--line);
-      padding-top:14px;
-    }
-    .btn{
-      appearance:none; border:0; cursor:pointer;
-      border-radius: 999px;
-      padding:12px 16px;
-      font-weight:650;
-      background:var(--accent);
-      color:#fff;
-      transition:.12s ease;
-    }
-    .btn:hover{transform:translateY(-1px); background:var(--accent2)}
-    .btn:disabled{opacity:.5; cursor:not-allowed; transform:none; background:var(--accent)}
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
 
-    .progress{
-      margin-left:auto;
-      display:flex; gap:10px; align-items:center;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .bar{
-      width:180px; height:8px; border-radius:999px;
-      background:#efefe9; overflow:hidden; border:1px solid var(--line);
-    }
-    .bar > div{height:100%; width:0%; background:var(--accent)}
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
 
-    footer{
-      margin-top:14px;
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
-    }
+        /* Problem Section */
+        .problem-section {
+            background: white;
+            padding: 60px 20px;
+        }
 
-    /* Modal */
-    .backdrop{
-      position:fixed; inset:0;
-      background:rgba(10,10,10,.45);
-      display:none;
-      align-items:center; justify-content:center;
-      padding:18px;
-      z-index:50;
-    }
-    .backdrop.open{display:flex}
-    .modal{
-      width:min(760px, 100%);
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:22px;
-      box-shadow: 0 25px 70px rgba(0,0,0,.25);
-      overflow:hidden;
-    }
-    .modal-head{
-      padding:16px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-      background: linear-gradient(180deg, #ffffff, #fbfbf8);
-      border-bottom:1px solid var(--line);
-    }
-    .role-chip{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-weight:750;
-      letter-spacing:-0.01em;
-    }
-    .x{
-      border:1px solid var(--line);
-      background:#fff;
-      width:38px; height:38px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:18px;
-      line-height:1;
-    }
-    .modal-body{padding:18px}
-    .role-block{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px;
-      background:#fcfcfb;
-    }
-    .role-block ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+        .problem-section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a3d6b;
+        }
 
-    .modal-actions{
-      padding:16px 18px;
-      border-top:1px solid var(--line);
-      background:#fff;
-    }
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
 
-    /* ОДНА большая кнопка вместо двух блоков */
-    .big-cta{
-      display:block;
-      width:100%;
-      text-decoration:none;
-      border-radius:18px;
-      padding:14px 14px;
-      border:1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
-      background: linear-gradient(180deg, #ffffff, var(--accentSoft));
-      color:var(--text);
-      transition:.12s ease;
-    }
-    .big-cta:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(0,0,0,.10);
-      border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
-    }
-    .big-cta strong{
-      display:block;
-      font-weight:800;
-      letter-spacing:-0.01em;
-      margin-bottom:4px;
-    }
-    .big-cta small{
-      display:block;
-      color:var(--muted);
-      line-height:1.35;
-    }
-  </style>
+        .problem-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .problem-card h3 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .problem-card p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            padding: 60px 20px;
+            background: #f8f9fa;
+        }
+
+        .steps-section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1a3d6b;
+        }
+
+        .step {
+            background: white;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .step-header {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3d6b 100%);
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .step-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: rgba(255,255,255,0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .step-content {
+            padding: 30px;
+        }
+
+        .step-content p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .step-actions {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .step-actions li {
+            margin-bottom: 10px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .insight-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffa726;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .insight-box strong {
+            color: #f57c00;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: white;
+            padding: 60px 20px;
+        }
+
+        .benefits-section h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a3d6b;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item h3 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3d6b 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+
+        .cta-button-large {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 22px 55px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button-large:hover {
+            background: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Author Section */
+        .author-section {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .author-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #1a3d6b;
+        }
+
+        .author-section p {
+            max-width: 700px;
+            margin: 0 auto 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .author-contact {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #2c5aa0;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .step-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .steps-section h2,
+            .problem-section h2,
+            .benefits-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="kicker">🧠 Мини-тест</div>
-      <h1>Какая у тебя роль в блоге: Эксперт, Вещатель или Продавец?</h1>
-      <p class="sub">
-        Для онлайн-экспертов (психологов, коучей, нутрициологов и др.), у которых есть блог и подписчики,
-        но <b>нет стабильных продаж</b> или запусков — и есть ощущение «я много делаю, но это не конвертируется в деньги».
-      </p>
-    </header>
-
-    <section class="card" id="quizCard">
-      <form id="quiz">
-        <!-- БЛОК 1 -->
-        <div class="block">
-          <p class="block-title">Блок 1</p>
-
-          <div class="q" data-q="1">
-            <p class="q-title">Когда ты выходишь в сторис, ты чаще всего:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q1" value="A" />
-                делишься знаниями, объясняешь, учишь
-              </label>
-              <label class="opt"><input type="radio" name="q1" value="B" />
-                рассказываешь о жизни, мыслях, наблюдениях
-              </label>
-              <label class="opt"><input type="radio" name="q1" value="C" />
-                ведёшь к конкретному действию или продукту
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="2">
-            <p class="q-title">Подписчики чаще пишут тебе:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q2" value="A" />
-                «Спасибо, очень полезно»
-              </label>
-              <label class="opt"><input type="radio" name="q2" value="B" />
-                «Как ты это проживаешь», «Я с тобой согласна»
-              </label>
-              <label class="opt"><input type="radio" name="q2" value="C" />
-                «Как к тебе попасть?», «Сколько стоит?»
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="3">
-            <p class="q-title">Когда думаешь о продажах, ты чувствуешь:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q3" value="A" />
-                «Я эксперт, но продавать не моя сильная сторона»
-              </label>
-              <label class="opt"><input type="radio" name="q3" value="B" />
-                «Мне неловко продавать, вдруг отпишутся»
-              </label>
-              <label class="opt"><input type="radio" name="q3" value="C" />
-                «Продажи — это логичный этап контента»
-              </label>
-            </div>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>7 ШАГОВ<br>ОТ БЛОГА-ХОББИ К СТАБИЛЬНЫМ<br>150 000-300 000 В МЕСЯЦ</h1>
+            <p class="subtitle">Пошаговый план монетизации вашей экспертности</p>
+            <p class="description">для экспертов и онлайн-специалистов с аудиторией</p>
         </div>
-
-        <!-- БЛОК 2 -->
-        <div class="block">
-          <p class="block-title">Блок 2</p>
-
-          <div class="q" data-q="4">
-            <p class="q-title">В твоём блоге больше всего контента:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q4" value="A" />
-                обучающего
-              </label>
-              <label class="opt"><input type="radio" name="q4" value="B" />
-                личного и разговорного
-              </label>
-              <label class="opt"><input type="radio" name="q4" value="C" />
-                смыслового + ведущего к решению
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="5">
-            <p class="q-title">Когда ты запускаешь продукт (или думаешь о запуске):</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q5" value="A" />
-                не понимаешь, как это системно сделать
-              </label>
-              <label class="opt"><input type="radio" name="q5" value="B" />
-                боишься показаться навязчивой
-              </label>
-              <label class="opt"><input type="radio" name="q5" value="C" />
-                понимаешь, что и зачем ты делаешь
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="6">
-            <p class="q-title">У тебя есть чёткое понимание, ЧТО ты продаёшь:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q6" value="A" />
-                скорее нет, всё в голове
-              </label>
-              <label class="opt"><input type="radio" name="q6" value="B" />
-                есть идея, но нет формы
-              </label>
-              <label class="opt"><input type="radio" name="q6" value="C" />
-                да, есть конкретный продукт
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- БЛОК 3 -->
-        <div class="block">
-          <p class="block-title">Блок 3</p>
-
-          <div class="q" data-q="7">
-            <p class="q-title">Ты чаще всего думаешь:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q7" value="A" />
-                «Мне нужно ещё учиться»
-              </label>
-              <label class="opt"><input type="radio" name="q7" value="B" />
-                «Мне нужно больше доверия и смелости»
-              </label>
-              <label class="opt"><input type="radio" name="q7" value="C" />
-                «Мне нужна система масштабирования»
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="8">
-            <p class="q-title">Твой блог сейчас — это:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q8" value="A" />
-                источник пользы
-              </label>
-              <label class="opt"><input type="radio" name="q8" value="B" />
-                место общения
-              </label>
-              <label class="opt"><input type="radio" name="q8" value="C" />
-                инструмент продаж
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="9">
-            <p class="q-title">Деньги в блоге для тебя сейчас — это:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q9" value="A" />
-                редкие всплески
-              </label>
-              <label class="opt"><input type="radio" name="q9" value="B" />
-                нестабильность
-              </label>
-              <label class="opt"><input type="radio" name="q9" value="C" />
-                управляемый процесс
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn" id="calcBtn" type="button" disabled>Показать результат</button>
-
-          <div class="progress" aria-live="polite">
-            <span id="answeredText">0/9</span>
-            <div class="bar" aria-hidden="true"><div id="barFill"></div></div>
-          </div>
-        </div>
-      </form>
     </section>
 
-    <footer></footer>
-  </div>
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2>Почему у вас не получается зарабатывать на блоге?</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; color: #555;">
+                Вы эксперт. У вас есть аудитория. Вы знаете свою тему. Но когда дело доходит до продаж — что-то идет не так.
+            </p>
 
-  <!-- Modal -->
-  <div class="backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal" id="modal">
-      <div class="modal-head" id="modalHead">
-        <div class="role-chip" id="roleChip">
-          <span id="modalTitle">Твой результат</span>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <h3>❌ Нет четкой линейки продуктов</h3>
+                    <p>Вы не знаете, что продавать и за сколько. Пытаетесь угадать цену или копируете у конкурентов, не понимая механику.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Нет системы прогрева</h3>
+                    <p>Аудитория не готова покупать, потому что вы не выстроили доверие и не показали ценность ваших услуг.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>❌ Нет понимания механики продаж</h3>
+                    <p>Вы боитесь продавать или делаете это неуверенно. Не знаете, как правильно запускать и закрывать продажи.</p>
+                </div>
+            </div>
         </div>
-        <button class="x" id="closeModal" aria-label="Закрыть">×</button>
-      </div>
+    </section>
 
-      <div class="modal-body" id="modalBody"></div>
+    <!-- Steps Section -->
+    <section class="steps-section">
+        <div class="container">
+            <h2>7 шагов к стабильным 150 000-300 000 в месяц</h2>
 
-      <div class="modal-actions">
-        <a class="big-cta" href="https://t.me/Boris_Khodakov" target="_blank" rel="noopener">
-          <strong>Хочешь перейти на следующий уровень?</strong>
-          <small>Если результат не устраивает — напиши мне в Telegram @Boris_Khodakov. Я продюсер запусков: разберём твою ситуацию и выстроим план, как превратить блог в систему продаж — без давления и хаоса.</small>
-        </a>
-      </div>
-    </div>
-  </div>
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Аудит вашей текущей позиции</div>
+                </div>
+                <div class="step-content">
+                    <p>Прежде чем что-то менять, нужно понять, где вы находитесь сейчас. Большинство экспертов пропускают этот шаг и начинают хаотично что-то пробовать.</p>
+                    <ul class="step-actions">
+                        <li>→ Проанализируйте вашу аудиторию: размер, вовлеченность, основные боли</li>
+                        <li>→ Оцените ваш текущий контент: что заходит, что нет</li>
+                        <li>→ Определите уровень доверия аудитории</li>
+                        <li>→ Посмотрите на конкурентов: что продают, по какой цене</li>
+                    </ul>
+                    <div class="insight-box">
+                        <strong>Инсайт:</strong> Если у вас меньше 3000 подписчиков — сначала наращивайте охваты. Если более 5000 — у вас уже есть база для первого запуска.
+                    </div>
+                </div>
+            </div>
 
-  <script>
-    (function(){
-      const form = document.getElementById('quiz');
-      const calcBtn = document.getElementById('calcBtn');
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Создайте линейку продуктов</div>
+                </div>
+                <div class="step-content">
+                    <p>Один из главных секретов стабильного дохода — это не один продукт, а линейка. Предлагайте продукты для разных уровней готовности клиентов.</p>
+                    <ul class="step-actions">
+                        <li><strong>Входной уровень:</strong> Лид-магнит (0-500₽) — познакомить с методологией</li>
+                        <li><strong>Базовый:</strong> Мини-курс (2000-7000₽) — решить одну боль</li>
+                        <li><strong>Средний:</strong> Основной курс (15000-30000₽) — комплексная трансформация</li>
+                        <li><strong>Премиум:</strong> Наставничество (50000-150000₽) — индивидуальная работа</li>
+                    </ul>
+                    <div class="insight-box">
+                        <strong>Инсайт:</strong> Начните с базового продукта за 5-15 тысяч. Это оптимальная точка входа для первых запусков.
+                    </div>
+                </div>
+            </div>
 
-      const answeredText = document.getElementById('answeredText');
-      const barFill = document.getElementById('barFill');
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Выстройте контентную стратегию прогрева</div>
+                </div>
+                <div class="step-content">
+                    <p>Продажи не начинаются в момент открытия. Они начинаются до запуска, когда вы планомерно прогреваете аудиторию через контент.</p>
+                    <ul class="step-actions">
+                        <li><strong>80% — ценность:</strong> обучающие посты, разбор кейсов, мифы и правда</li>
+                        <li><strong>20% — личное:</strong> ваш путь, истории клиентов, ценности</li>
+                    </ul>
+                    <div class="insight-box">
+                        <strong>Инсайт:</strong> Регулярность важнее объема. 3-4 качественных поста в неделю лучше ежедневного хаоса.
+                    </div>
+                </div>
+            </div>
 
-      const backdrop = document.getElementById('backdrop');
-      const closeModalBtn = document.getElementById('closeModal');
-      const modalBody = document.getElementById('modalBody');
-      const modalTitle = document.getElementById('modalTitle');
+            <!-- Step 4 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Создайте магнит для сбора заявок</div>
+                </div>
+                <div class="step-content">
+                    <p>Нужна не просто аудитория в соцсетях, а база контактов людей, которые проявили интерес.</p>
+                    <ul class="step-actions">
+                        <li>→ Чек-лист или гайд по решению проблемы</li>
+                        <li>→ Диагностика/тест с разбором</li>
+                        <li>→ Мини-курс на 3-5 уроков</li>
+                        <li>→ Вебинар или мастер-класс</li>
+                    </ul>
+                    <div class="insight-box">
+                        <strong>Инсайт:</strong> Лид-магнит должен давать быстрый результат и логично вести к платному продукту.
+                    </div>
+                </div>
+            </div>
 
-      const TOTAL = 9;
+            <!-- Step 5 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Запустите прогрев и предзапись</div>
+                </div>
+                <div class="step-content">
+                    <p>Это самый важный этап. Прогрев за несколько дней до старта продаж — это система подготовки людей к покупке.</p>
+                    <ul class="step-actions">
+                        <li><strong>Дни 1-5:</strong> Обострение проблемы</li>
+                        <li><strong>Дни 6-10:</strong> Показ пути решения</li>
+                        <li><strong>Дни 11-14:</strong> Создание ажиотажа</li>
+                    </ul>
+                    <div class="insight-box">
+                        <strong>Инсайт:</strong> Предзапись — страховка. Люди с предзаписью с большей вероятностью купят.
+                    </div>
+                </div>
+            </div>
 
-      const ROLE = {
-        A: {
-          title: 'ТЫ ЭКСПЕРТ',
-          bullets: [
-            'ты много даёшь ценности, но не упаковываешь её в продукт',
-            'аудитория получает пользу, но не понимает “что купить и как”',
-            'продажи случаются случайно, без системы'
-          ],
-          focus: 'Твоя ключевая точка роста — упаковка и продуктовая система.'
-        },
-        B: {
-          title: 'ТЫ ВЕЩАТЕЛЬ',
-          bullets: [
-            'ты создаёшь доверие и близость, но блог не монетизируется',
-            'продажи кажутся неловкими или “слишком навязчивыми”',
-            'нет чёткой стратегии, которая ведёт к оплате'
-          ],
-          focus: 'Твоя точка роста — экологичные продажи без давления.'
-        },
-        C: {
-          title: 'ТЫ ПРОДАВЕЦ',
-          bullets: [
-            'ты понимаешь ценность продаж, но можешь перегружать себя',
-            'упираешься в потолок из-за отсутствия системы',
-            'нужно масштабирование через структуру, запуски и партнёрства'
-          ],
-          focus: 'Твоя точка роста — системные запуски и партнёрство.'
-        }
-      };
+            <!-- Step 6 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <div class="step-title">Проведите запуск с продающей механикой</div>
+                </div>
+                <div class="step-content">
+                    <p>Запуск — это четкая механика с триггерами, дедлайнами и активностями на 5-7 дней.</p>
+                    <ul class="step-actions">
+                        <li><strong>День 1:</strong> Открытие продаж с эмоциональным анонсом</li>
+                        <li><strong>Дни 2-4:</strong> Прогрев и отработка возражений</li>
+                        <li><strong>День 5-6:</strong> Усиление срочности</li>
+                        <li><strong>День 7:</strong> Последний шанс</li>
+                    </ul>
+                    <div class="insight-box">
+                        <strong>Инсайт:</strong> Большинство продаж происходит в последний день. Не бойтесь напоминать!
+                    </div>
+                </div>
+            </div>
 
-      // highlight selected option
-      form.addEventListener('change', (e) => {
-        if (e.target && e.target.matches('input[type="radio"]')) {
-          const q = e.target.name;
-          form.querySelectorAll(`input[name="${q}"]`).forEach(inp => {
-            inp.closest('.opt').classList.toggle('selected', inp.checked);
-          });
-          updateProgress();
-        }
-      });
+            <!-- Step 7 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <div class="step-title">Проведите продукт и соберите отзывы</div>
+                </div>
+                <div class="step-content">
+                    <p>Качество проведения продукта определяет ваши будущие доходы. После продажи работа только начинается.</p>
+                    <ul class="step-actions">
+                        <li>→ Выполните обещания — дайте больше ожидаемого</li>
+                        <li>→ Фиксируйте результаты учеников</li>
+                        <li>→ Просите отзывы на каждом этапе</li>
+                        <li>→ Создайте кейсы для следующих запусков</li>
+                    </ul>
+                    <div class="insight-box">
+                        <strong>Инсайт:</strong> Даже 5-10 довольных клиентов с результатами — основа для следующего, более масштабного запуска.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      function updateProgress(){
-        const answered = form.querySelectorAll('input[type="radio"]:checked').length;
-        answeredText.textContent = `${answered}/${TOTAL}`;
-        const pct = Math.round((answered / TOTAL) * 100);
-        barFill.style.width = pct + '%';
-        calcBtn.disabled = answered !== TOTAL;
-      }
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Что вы получите, следуя этой системе</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Стабильный доход</h3>
+                    <p>150-300 тысяч рублей в месяц от запусков</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Ясность в продуктах</h3>
+                    <p>Понимание что, кому и за сколько продавать</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Системный подход</h3>
+                    <p>Повторяемая механика запусков</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✨</div>
+                    <h3>Уверенность в продажах</h3>
+                    <p>Конкретные скрипты и последовательность действий</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      function tally(){
-        const counts = {A:0, B:0, C:0};
-        for(let i=1;i<=TOTAL;i++){
-          const v = form.querySelector(`input[name="q${i}"]:checked`)?.value;
-          if (v) counts[v]++;
-        }
-        return counts;
-      }
-
-      function pickRole(counts){
-        // если ничья — приоритет C > A > B (можно поменять)
-        const entries = Object.entries(counts).sort((x,y) => y[1]-x[1]);
-        const topScore = entries[0][1];
-        const tied = entries.filter(e => e[1] === topScore).map(e => e[0]);
-        if (tied.length === 1) return tied[0];
-        const priority = ['C','A','B'];
-        for (const p of priority) if (tied.includes(p)) return p;
-        return entries[0][0];
-      }
-
-      function openModal(roleKey, counts){
-        const role = ROLE[roleKey];
-
-        modalTitle.textContent = role.title;
-
-        modalBody.innerHTML = `
-          <div class="role-block">
-            <p style="margin:0 0 10px">
-              <b>Твой результат:</b> ${role.title}<br>
-              <span style="color:#6b6b6b">Ответы распределились так: ${counts.A} / ${counts.B} / ${counts.C}</span>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Готовы сделать первый запуск на 150 000-300 000?</h2>
+            <p>Напишите мне в Telegram и получите бесплатный аудит вашего блога</p>
+            <a href="https://t.me/Boris_Khodakov" class="cta-button-large">НАПИСАТЬ В TELEGRAM</a>
+            <p style="margin-top: 30px; font-size: 1rem; opacity: 0.8;">
+                Я расскажу, как можно запустить первый продукт уже в ближайшую неделю
             </p>
-            <ul>
-              ${role.bullets.map(b => `<li>${b}</li>`).join('')}
-            </ul>
-            <p style="margin:10px 0 0"><b>📌 ${role.focus}</b></p>
-          </div>
+        </div>
+    </section>
 
-          <div style="margin-top:14px">
-            <p style="margin:0"><b>🚀 Что важно понять</b></p>
-            <p style="margin:8px 0 0; color:#6b6b6b">
-              👉 <b>Любой эксперт проходит все 3 роли.</b><br>
-              👉 Проблема не в тебе, а в отсутствии системы.<br>
-              👉 Продажи — это не талант, а структура.
+    <!-- Author Section -->
+    <section class="author-section">
+        <div class="container">
+            <h2>Об авторе</h2>
+            <p>
+                Я — Борис Ходаков, продюсер запусков для экспертов. Помогаю экспертам твердых и мягких ниш 
+                и другим специалистам с личным брендом превращать их экспертность в стабильный доход через запуски.
             </p>
-          </div>
-        `;
+            <p>
+                Беру на себя всю механику: от аудита и стратегии до прогрева, запуска и анализа результатов. 
+                Вы фокусируетесь на экспертности — я на результате.
+            </p>
+            <div class="author-contact">
+                Telegram: 📨 @Boris_Khodakov
+            </div>
+        </div>
+    </section>
 
-        backdrop.classList.add('open');
-        closeModalBtn.focus();
-      }
-
-      function closeModal(){
-        backdrop.classList.remove('open');
-      }
-
-      calcBtn.addEventListener('click', () => {
-        const counts = tally();
-        const roleKey = pickRole(counts);
-        openModal(roleKey, counts);
-      });
-
-      closeModalBtn.addEventListener('click', closeModal);
-
-      backdrop.addEventListener('click', (e) => {
-        if (e.target === backdrop) closeModal();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
-      });
-
-      updateProgress();
-    })();
-  </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Борис Ходаков. Все права защищены.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                Этот гайд создан на основе реального опыта запусков онлайн-экспертов
+            </p>
+        </div>
+    </footer>
 </body>
 </html>
-
