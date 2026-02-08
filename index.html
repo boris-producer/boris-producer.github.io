@@ -1,570 +1,698 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Мини-тест: Эксперт, Вещатель или Продавец?</title>
-  <style>
-    :root{
-      --bg:#f6f6f4;
-      --card:#ffffff;
-      --text:#161616;
-      --muted:#6b6b6b;
-      --line:#e7e7e3;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Борис Ходаков | Продюсер Запусков</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      /* Нейтральный “не-едкий” акцент вместо чёрного */
-      --accent:#2a2f36;         /* тёмный графит */
-      --accent2:#3b4652;        /* чуть светлее */
-      --accentSoft:#eef1f4;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: #0a0a0a;
+            overflow-x: hidden;
+        }
 
-      --shadow: 0 12px 30px rgba(0,0,0,.06);
-      --radius: 18px;
-      --radius2: 14px;
-      --max: 860px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, #ffffff 0%, var(--bg) 55%, #f3f3ef 100%);
-      color:var(--text);
-      line-height:1.45;
-    }
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 56px}
-    header{margin-bottom:16px}
-    .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      font-size:13px; color:var(--muted);
-      padding:6px 10px; border:1px solid var(--line); border-radius:999px;
-      background:rgba(255,255,255,.65);
-      width:fit-content;
-    }
-    h1{
-      font-size: clamp(22px, 2.8vw, 34px);
-      margin:10px 0 0;
-      letter-spacing:-0.02em;
-    }
-    .sub{
-      margin:10px 0 0;
-      color:var(--muted);
-      max-width:70ch;
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
 
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:18px;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-    /* Блоки */
-    .block{
-      margin-top:14px;
-      border-top:1px solid var(--line);
-      padding-top:14px;
-    }
-    .block:first-child{border-top:0; padding-top:0}
-    .block-title{
-      margin:0 0 10px;
-      font-size:14px;
-      color:var(--muted);
-      letter-spacing:.02em;
-      text-transform:uppercase;
-    }
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
 
-    /* Вопросы */
-    .q{
-      border:1px solid var(--line);
-      border-radius:var(--radius2);
-      padding:14px;
-      background:#fcfcfb;
-      margin-top:12px;
-    }
-    .q:first-child{margin-top:0}
-    .q-title{
-      font-weight:650;
-      margin:0 0 10px;
-    }
-    .opts{display:grid; gap:10px}
-    .opt{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px 12px;
-      border:1px solid var(--line);
-      border-radius:var(--radius2);
-      background:#fff;
-      cursor:pointer;
-      transition:.12s ease;
-      user-select:none;
-    }
-    .opt:hover{transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,.05)}
-    .opt input{margin-top:2px}
-    .opt.selected{
-      border-color: color-mix(in srgb, var(--accent) 24%, var(--line));
-      box-shadow: 0 10px 20px rgba(0,0,0,.06);
-    }
+        .hero-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 40px;
+            border: 3px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: #3b82f6;
+        }
 
-    .actions{
-      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
-      margin-top:16px;
-      border-top:1px solid var(--line);
-      padding-top:14px;
-    }
-    .btn{
-      appearance:none; border:0; cursor:pointer;
-      border-radius: 999px;
-      padding:12px 16px;
-      font-weight:650;
-      background:var(--accent);
-      color:#fff;
-      transition:.12s ease;
-    }
-    .btn:hover{transform:translateY(-1px); background:var(--accent2)}
-    .btn:disabled{opacity:.5; cursor:not-allowed; transform:none; background:var(--accent)}
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .progress{
-      margin-left:auto;
-      display:flex; gap:10px; align-items:center;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .bar{
-      width:180px; height:8px; border-radius:999px;
-      background:#efefe9; overflow:hidden; border:1px solid var(--line);
-    }
-    .bar > div{height:100%; width:0%; background:var(--accent)}
+        .hero-subtitle {
+            font-size: 1.5em;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
 
-    footer{
-      margin-top:14px;
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
-    }
+        .hero-description {
+            font-size: 1.2em;
+            color: #808080;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    /* Modal */
-    .backdrop{
-      position:fixed; inset:0;
-      background:rgba(10,10,10,.45);
-      display:none;
-      align-items:center; justify-content:center;
-      padding:18px;
-      z-index:50;
-    }
-    .backdrop.open{display:flex}
-    .modal{
-      width:min(760px, 100%);
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:22px;
-      box-shadow: 0 25px 70px rgba(0,0,0,.25);
-      overflow:hidden;
-    }
-    .modal-head{
-      padding:16px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-      background: linear-gradient(180deg, #ffffff, #fbfbf8);
-      border-bottom:1px solid var(--line);
-    }
-    .role-chip{
-      display:inline-flex; gap:10px; align-items:center;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-weight:750;
-      letter-spacing:-0.01em;
-    }
-    .x{
-      border:1px solid var(--line);
-      background:#fff;
-      width:38px; height:38px;
-      border-radius:999px;
-      cursor:pointer;
-      font-size:18px;
-      line-height:1;
-    }
-    .modal-body{padding:18px}
-    .role-block{
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px;
-      background:#fcfcfb;
-    }
-    .role-block ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .modal-actions{
-      padding:16px 18px;
-      border-top:1px solid var(--line);
-      background:#fff;
-    }
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
 
-    /* ОДНА большая кнопка вместо двух блоков */
-    .big-cta{
-      display:block;
-      width:100%;
-      text-decoration:none;
-      border-radius:18px;
-      padding:14px 14px;
-      border:1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
-      background: linear-gradient(180deg, #ffffff, var(--accentSoft));
-      color:var(--text);
-      transition:.12s ease;
-    }
-    .big-cta:hover{
-      transform: translateY(-1px);
-      box-shadow: 0 14px 28px rgba(0,0,0,.10);
-      border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
-    }
-    .big-cta strong{
-      display:block;
-      font-weight:800;
-      letter-spacing:-0.01em;
-      margin-bottom:4px;
-    }
-    .big-cta small{
-      display:block;
-      color:var(--muted);
-      line-height:1.35;
-    }
-  </style>
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.4);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3));
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .about-box:hover::before {
+            opacity: 1;
+        }
+
+        .about-box:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-5px);
+        }
+
+        .about-text {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        .highlight-text {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        /* For Who Section */
+        .for-who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .for-who-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .for-who-item::before {
+            content: '✓';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #3b82f6;
+            font-size: 1.5em;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .for-who-item:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-5px);
+        }
+
+        .for-who-item:hover::before {
+            opacity: 1;
+        }
+
+        .for-who-item h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .for-who-item p {
+            color: #a0a0a0;
+            font-size: 1em;
+        }
+
+        /* How We Work */
+        .work-steps {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .work-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            min-width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .step-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 15px;
+            padding: 25px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .step-content:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .step-content h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .step-content p {
+            color: #a0a0a0;
+            line-height: 1.7;
+        }
+
+        /* Social Links */
+        .social-section {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 15px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            gap: 12px;
+        }
+
+        .social-link:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .social-icon {
+            font-size: 1.8em;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .contact-box h3 {
+            font-size: 2em;
+            color: #ffffff;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-box p {
+            color: #a0a0a0;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Materials Section */
+        .materials-section {
+            background: rgba(255, 255, 255, 0.01);
+            padding: 100px 0;
+        }
+
+        .materials-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .materials-intro p {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            line-height: 1.7;
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .material-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .material-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .material-card:hover::before {
+            left: 100%;
+        }
+
+        .material-card:hover {
+            border-color: rgba(59, 130, 246, 0.6);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .material-emoji {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .material-title {
+            color: #ffffff;
+            font-size: 1.1em;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .material-card.coming-soon {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-style: dashed;
+        }
+
+        .material-card.coming-soon:hover {
+            transform: none;
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: none;
+        }
+
+        .coming-soon-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            padding: 40px 0;
+            text-align: center;
+            color: #606060;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+
+            .hero-description {
+                font-size: 1em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .about-box,
+            .contact-box {
+                padding: 30px 20px;
+            }
+
+            .work-step {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="kicker">🧠 Мини-тест</div>
-      <h1>Какая у тебя роль в блоге: Эксперт, Вещатель или Продавец?</h1>
-      <p class="sub">
-        Для онлайн-экспертов (психологов, коучей, нутрициологов и др.), у которых есть блог и подписчики,
-        но <b>нет стабильных продаж</b> или запусков — и есть ощущение «я много делаю, но это не конвертируется в деньги».
-      </p>
-    </header>
-
-    <section class="card" id="quizCard">
-      <form id="quiz">
-        <!-- БЛОК 1 -->
-        <div class="block">
-          <p class="block-title">Блок 1</p>
-
-          <div class="q" data-q="1">
-            <p class="q-title">Когда ты выходишь в сторис, ты чаще всего:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q1" value="A" />
-                делишься знаниями, объясняешь, учишь
-              </label>
-              <label class="opt"><input type="radio" name="q1" value="B" />
-                рассказываешь о жизни, мыслях, наблюдениях
-              </label>
-              <label class="opt"><input type="radio" name="q1" value="C" />
-                ведёшь к конкретному действию или продукту
-              </label>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-photo">
+                👤
             </div>
-          </div>
-
-          <div class="q" data-q="2">
-            <p class="q-title">Подписчики чаще пишут тебе:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q2" value="A" />
-                «Спасибо, очень полезно»
-              </label>
-              <label class="opt"><input type="radio" name="q2" value="B" />
-                «Как ты это проживаешь», «Я с тобой согласна»
-              </label>
-              <label class="opt"><input type="radio" name="q2" value="C" />
-                «Как к тебе попасть?», «Сколько стоит?»
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="3">
-            <p class="q-title">Когда думаешь о продажах, ты чувствуешь:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q3" value="A" />
-                «Я эксперт, но продавать не моя сильная сторона»
-              </label>
-              <label class="opt"><input type="radio" name="q3" value="B" />
-                «Мне неловко продавать, вдруг отпишутся»
-              </label>
-              <label class="opt"><input type="radio" name="q3" value="C" />
-                «Продажи — это логичный этап контента»
-              </label>
-            </div>
-          </div>
+            <h1>Борис Ходаков</h1>
+            <p class="hero-subtitle">Продюсер Запусков</p>
+            <p class="hero-description">
+                Захожу в проекты экспертов как партнёр, <br>
+		собираю стратегию и провожу запуски
+            </p>
+            <a href="https://t.me/boris_khodakov" target="_blank" class="cta-button">
+                Написать в 📝 Telegram
+            </a>
         </div>
-
-        <!-- БЛОК 2 -->
-        <div class="block">
-          <p class="block-title">Блок 2</p>
-
-          <div class="q" data-q="4">
-            <p class="q-title">В твоём блоге больше всего контента:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q4" value="A" />
-                обучающего
-              </label>
-              <label class="opt"><input type="radio" name="q4" value="B" />
-                личного и разговорного
-              </label>
-              <label class="opt"><input type="radio" name="q4" value="C" />
-                смыслового + ведущего к решению
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="5">
-            <p class="q-title">Когда ты запускаешь продукт (или думаешь о запуске):</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q5" value="A" />
-                не понимаешь, как это системно сделать
-              </label>
-              <label class="opt"><input type="radio" name="q5" value="B" />
-                боишься показаться навязчивой
-              </label>
-              <label class="opt"><input type="radio" name="q5" value="C" />
-                понимаешь, что и зачем ты делаешь
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="6">
-            <p class="q-title">У тебя есть чёткое понимание, ЧТО ты продаёшь:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q6" value="A" />
-                скорее нет, всё в голове
-              </label>
-              <label class="opt"><input type="radio" name="q6" value="B" />
-                есть идея, но нет формы
-              </label>
-              <label class="opt"><input type="radio" name="q6" value="C" />
-                да, есть конкретный продукт
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- БЛОК 3 -->
-        <div class="block">
-          <p class="block-title">Блок 3</p>
-
-          <div class="q" data-q="7">
-            <p class="q-title">Ты чаще всего думаешь:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q7" value="A" />
-                «Мне нужно ещё учиться»
-              </label>
-              <label class="opt"><input type="radio" name="q7" value="B" />
-                «Мне нужно больше доверия и смелости»
-              </label>
-              <label class="opt"><input type="radio" name="q7" value="C" />
-                «Мне нужна система масштабирования»
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="8">
-            <p class="q-title">Твой блог сейчас — это:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q8" value="A" />
-                источник пользы
-              </label>
-              <label class="opt"><input type="radio" name="q8" value="B" />
-                место общения
-              </label>
-              <label class="opt"><input type="radio" name="q8" value="C" />
-                инструмент продаж
-              </label>
-            </div>
-          </div>
-
-          <div class="q" data-q="9">
-            <p class="q-title">Деньги в блоге для тебя сейчас — это:</p>
-            <div class="opts">
-              <label class="opt"><input type="radio" name="q9" value="A" />
-                редкие всплески
-              </label>
-              <label class="opt"><input type="radio" name="q9" value="B" />
-                нестабильность
-              </label>
-              <label class="opt"><input type="radio" name="q9" value="C" />
-                управляемый процесс
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn" id="calcBtn" type="button" disabled>Показать результат</button>
-
-          <div class="progress" aria-live="polite">
-            <span id="answeredText">0/9</span>
-            <div class="bar" aria-hidden="true"><div id="barFill"></div></div>
-          </div>
-        </div>
-      </form>
     </section>
 
-    <footer>Можно вставить на Tilda / любой хостинг как один HTML-файл.</footer>
-  </div>
-
-  <!-- Modal -->
-  <div class="backdrop" id="backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal" id="modal">
-      <div class="modal-head" id="modalHead">
-        <div class="role-chip" id="roleChip">
-          <span id="modalTitle">Твой результат</span>
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">О чём я</h2>
+            <div class="about-content">
+                <div class="about-box">
+                    <p class="about-text">
+                        Я не «веду аккаунты». Я захожу в проекты экспертов с аудиторией как <span class="highlight-text">продюсер-партнёр</span> и помогаю собрать запуск под ключ — от концепта продукта до первых продаж.
+                    </p>
+                </div>
+                <div class="about-box">
+                    <p class="about-text">
+                        Работаю системно и экологично, без хаоса и давления на аудиторию. Зарабатываем вместе — поэтому я отвечаю за <span class="highlight-text">результат</span>, а не за процесс.
+                    </p>
+                </div>
+                <div class="about-box">
+                    <p class="about-text">
+                        С 2012 года в маркетинге. В онлайн — осознанно, не случайно. Прошёл обучение у Михаила Тимочко <span class="highlight-text">«Формула Запуска 8.0»</span>, получил высокую оценку куратора и сертификат об успешном завершении.
+                    </p>
+                </div>
+            </div>
         </div>
-        <button class="x" id="closeModal" aria-label="Закрыть">×</button>
-      </div>
+    </section>
 
-      <div class="modal-body" id="modalBody"></div>
+    <!-- For Who Section -->
+    <section id="for-who">
+        <div class="container">
+            <h2 class="section-title">Для кого</h2>
+            <div class="for-who-grid">
+                <div class="for-who-item">
+                    <h3>У тебя есть аудитория</h3>
+                    <p>Блог ведёшь, подписчики есть, но деньги не идут</p>
+                </div>
+                <div class="for-who-item">
+                    <h3>Есть экспертность</h3>
+                    <p>Разбираешься в своей теме, помогаешь людям</p>
+                </div>
+                <div class="for-who-item">
+                    <h3>Нет системы продаж</h3>
+                    <p>Не понимаешь, какой продукт делать и как продавать</p>
+                </div>
+                <div class="for-who-item">
+                    <h3>Есть продукт, но нет продаж</h3>
+                    <p>Продукт создан, но продажи редкие или их вообще нет</p>
+                </div>
+                <div class="for-who-item">
+                    <h3>Страх продаж</h3>
+                    <p>Боишься «облажаться» или делаешь всё сам и устаёшь</p>
+                </div>
+                <div class="for-who-item">
+                    <h3>Не хочешь идти один</h3>
+                    <p>Я поддержу как партнёр — мы вместе пройдём этот путь до результата</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="modal-actions">
-        <a class="big-cta" href="https://t.me/Boris_Khodakov" target="_blank" rel="noopener">
-          <strong>Хочешь перейти на следующий уровень?</strong>
-          <small>Если результат не устраивает — напиши мне в Telegram @Boris_Khodakov. Я продюсер запусков: разберём твою ситуацию и выстроим план, как превратить блог в систему продаж — без давления и хаоса.</small>
-        </a>
-      </div>
-    </div>
-  </div>
+    <!-- How We Work -->
+    <section id="how">
+        <div class="container">
+            <h2 class="section-title">Как работаем</h2>
+            <div class="work-steps">
+                <div class="work-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Диагностика и концепт</h3>
+                        <p>Смотрю на твою экспертность, аудиторию и собираю концепт продукта, который будет продаваться</p>
+                    </div>
+                </div>
+                <div class="work-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Стратегия запуска</h3>
+                        <p>Выстраиваю прогрев, логику продаж и всю воронку под твою аудиторию</p>
+                    </div>
+                </div>
+                <div class="work-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Запуск</h3>
+                        <p>Провожу весь процесс: от идеи до денег</p>
+                    </div>
+                </div>
+                <div class="work-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Партнёрство</h3>
+                        <p>Моя модель — партнёрство: вместе работаем, вместе зарабатываем</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <script>
-    (function(){
-      const form = document.getElementById('quiz');
-      const calcBtn = document.getElementById('calcBtn');
+    <!-- Materials Section -->
+    <section class="materials-section">
+        <div class="container">
+            <h2 class="section-title">Полезные материалы</h2>
+            <div class="materials-intro">
+                <p>
+                    Тесты и гайды, которые помогут тебе разобраться в своём блоге<br>
+			 и подготовиться к запуску 🚀
+                </p>
+            </div>
+            <div class="materials-grid">
+                <a href="#" class="material-card">
+                    <span class="material-emoji">🎭</span>
+                    <div class="material-title">Какая у тебя роль в блоге?</div>
+                </a>
+                <a href="#" class="material-card">
+                    <span class="material-emoji">💰</span>
+                    <div class="material-title">7 Шагов к 200 000</div>
+                </a>
+                <a href="#" class="material-card">
+                    <span class="material-emoji">✅</span>
+                    <div class="material-title">Готов ли ты к запуску?</div>
+                </a>
+                <div class="material-card coming-soon">
+                    <span class="material-emoji">🔮</span>
+                    <div class="material-title">Новый материал</div>
+                    <span class="coming-soon-badge">Скоро</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      const answeredText = document.getElementById('answeredText');
-      const barFill = document.getElementById('barFill');
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Связаться</h2>
+            <div class="contact-box">
+                <h3>Готов обсудить твой проект</h3>
+                <p>Если у тебя есть аудитория, но нет системы продаж<br>
+			 — обсудим твой запуск?</p>
+                <a href="https://t.me/boris_khodakov" target="_blank" class="cta-button">
+                    Написать в 📝 Telegram
+                </a>
+            </div>
+        </div>
+    </section>
 
-      const backdrop = document.getElementById('backdrop');
-      const closeModalBtn = document.getElementById('closeModal');
-      const modalBody = document.getElementById('modalBody');
-      const modalTitle = document.getElementById('modalTitle');
-
-      const TOTAL = 9;
-
-      const ROLE = {
-        A: {
-          title: 'ТЫ ЭКСПЕРТ',
-          bullets: [
-            'ты много даёшь ценности, но не упаковываешь её в продукт',
-            'аудитория получает пользу, но не понимает “что купить и как”',
-            'продажи случаются случайно, без системы'
-          ],
-          focus: 'Твоя ключевая точка роста — упаковка и продуктовая система.'
-        },
-        B: {
-          title: 'ТЫ ВЕЩАТЕЛЬ',
-          bullets: [
-            'ты создаёшь доверие и близость, но блог не монетизируется',
-            'продажи кажутся неловкими или “слишком навязчивыми”',
-            'нет чёткой стратегии, которая ведёт к оплате'
-          ],
-          focus: 'Твоя точка роста — экологичные продажи без давления.'
-        },
-        C: {
-          title: 'ТЫ ПРОДАВЕЦ',
-          bullets: [
-            'ты понимаешь ценность продаж, но можешь перегружать себя',
-            'упираешься в потолок из-за отсутствия системы',
-            'нужно масштабирование через структуру, запуски и партнёрства'
-          ],
-          focus: 'Твоя точка роста — системные запуски и партнёрство.'
-        }
-      };
-
-      // highlight selected option
-      form.addEventListener('change', (e) => {
-        if (e.target && e.target.matches('input[type="radio"]')) {
-          const q = e.target.name;
-          form.querySelectorAll(`input[name="${q}"]`).forEach(inp => {
-            inp.closest('.opt').classList.toggle('selected', inp.checked);
-          });
-          updateProgress();
-        }
-      });
-
-      function updateProgress(){
-        const answered = form.querySelectorAll('input[type="radio"]:checked').length;
-        answeredText.textContent = `${answered}/${TOTAL}`;
-        const pct = Math.round((answered / TOTAL) * 100);
-        barFill.style.width = pct + '%';
-        calcBtn.disabled = answered !== TOTAL;
-      }
-
-      function tally(){
-        const counts = {A:0, B:0, C:0};
-        for(let i=1;i<=TOTAL;i++){
-          const v = form.querySelector(`input[name="q${i}"]:checked`)?.value;
-          if (v) counts[v]++;
-        }
-        return counts;
-      }
-
-      function pickRole(counts){
-        // если ничья — приоритет C > A > B (можно поменять)
-        const entries = Object.entries(counts).sort((x,y) => y[1]-x[1]);
-        const topScore = entries[0][1];
-        const tied = entries.filter(e => e[1] === topScore).map(e => e[0]);
-        if (tied.length === 1) return tied[0];
-        const priority = ['C','A','B'];
-        for (const p of priority) if (tied.includes(p)) return p;
-        return entries[0][0];
-      }
-
-      function openModal(roleKey, counts){
-        const role = ROLE[roleKey];
-
-        modalTitle.textContent = role.title;
-
-        modalBody.innerHTML = `
-          <div class="role-block">
-            <p style="margin:0 0 10px">
-              <b>Твой результат:</b> ${role.title}<br>
-              <span style="color:#6b6b6b">Ответы распределились так: ${counts.A} / ${counts.B} / ${counts.C}</span>
-            </p>
-            <ul>
-              ${role.bullets.map(b => `<li>${b}</li>`).join('')}
-            </ul>
-            <p style="margin:10px 0 0"><b>📌 ${role.focus}</b></p>
-          </div>
-
-          <div style="margin-top:14px">
-            <p style="margin:0"><b>🚀 Что важно понять</b></p>
-            <p style="margin:8px 0 0; color:#6b6b6b">
-              👉 <b>Любой эксперт проходит все 3 роли.</b><br>
-              👉 Проблема не в тебе, а в отсутствии системы.<br>
-              👉 Продажи — это не талант, а структура.
-            </p>
-          </div>
-        `;
-
-        backdrop.classList.add('open');
-        closeModalBtn.focus();
-      }
-
-      function closeModal(){
-        backdrop.classList.remove('open');
-      }
-
-      calcBtn.addEventListener('click', () => {
-        const counts = tally();
-        const roleKey = pickRole(counts);
-        openModal(roleKey, counts);
-      });
-
-      closeModalBtn.addEventListener('click', closeModal);
-
-      backdrop.addEventListener('click', (e) => {
-        if (e.target === backdrop) closeModal();
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
-      });
-
-      updateProgress();
-    })();
-  </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Борис Ходаков • Продюсер Запусков</p>
+        </div>
+    </footer>
 </body>
 </html>
