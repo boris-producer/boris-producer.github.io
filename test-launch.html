@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Готов ли ты к запуску?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+      background: #f4f8fb;
+      color: #1f2933;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #475569;
+      max-width: 720px;
+      margin-bottom: 16px;
+    }
+
+    .subtitle.secondary {
+      margin-bottom: 48px;
+    }
+
+    .block {
+      margin-bottom: 40px;
+      padding: 28px;
+      border-radius: 16px;
+      background: #eaf3f8;
+      border: 1px solid #d6e6ef;
+    }
+
+    .block h2 {
+      margin-top: 0;
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: #0f172a;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+      accent-color: #38bdf8;
+    }
+
+    button {
+      margin-top: 40px;
+      padding: 18px 32px;
+      font-size: 18px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      color: #ffffff;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .result {
+      margin-top: 48px;
+      padding: 32px;
+      border-radius: 20px;
+      display: none;
+    }
+
+    /* 0–8 баллов — красный */
+    .result.low {
+      background: #fff1f2;
+      border: 1px solid #fca5a5;
+    }
+
+    /* 9–13 баллов — жёлтый */
+    .result.mid {
+      background: #fffbeb;
+      border: 1px solid #facc15;
+    }
+
+    /* 14–16 баллов — зелёный */
+    .result.high {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+    }
+
+    .cta-button {
+      margin-top: 24px;
+      display: inline-block;
+      padding: 16px 22px;
+      border-radius: 14px;
+      background: #ffffff;
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 600;
+      border: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Готов ли ты к запуску?</h1>
+
+  <p class="subtitle">
+    Чек-лист для трезвой оценки готовности к запуску продукта в соцсетях.
+  </p>
+
+  <p class="subtitle secondary">
+    Отметь пункты и посмотри, в каком состоянии ты сейчас находишься.
+  </p>
+
+  <div class="block">
+    <h2>1. Продукт</h2>
+    <label><input type="checkbox"> Я чётко понимаю, какую проблему решает мой продукт</label>
+    <label><input type="checkbox"> У меня есть структура или программа продукта</label>
+    <label><input type="checkbox"> Я уверен, что тема интересна моей аудитории</label>
+    <label><input type="checkbox"> Я могу просто сформулировать ценность продукта</label>
+  </div>
+
+  <div class="block">
+    <h2>2. Аудитория</h2>
+    <label><input type="checkbox"> У меня есть аудитория, которая меня читает</label>
+    <label><input type="checkbox"> Я понимаю желания и страхи аудитории</label>
+    <label><input type="checkbox"> Я тестировал спрос</label>
+    <label><input type="checkbox"> Я уверен, что продукт попадёт в запрос</label>
+  </div>
+
+  <div class="block">
+    <h2>3. Продажи</h2>
+    <label><input type="checkbox"> Я понимаю этапы запуска</label>
+    <label><input type="checkbox"> Я знаю, как подогревать интерес</label>
+    <label><input type="checkbox"> У меня есть план прогрева</label>
+    <label><input type="checkbox"> Я понимаю, как будет проходить продажа</label>
+  </div>
+
+  <div class="block">
+    <h2>4. Психология и энергия</h2>
+    <label><input type="checkbox"> Я уверен в своей ценности</label>
+    <label><input type="checkbox"> Я готов спокойно говорить о продаже</label>
+    <label><input type="checkbox"> Я понимаю, что запуск — это система</label>
+    <label><input type="checkbox"> У меня есть поддержка или партнёр</label>
+  </div>
+
+  <button onclick="calculate()">Посчитать результат</button>
+
+  <div id="result" class="result"></div>
+
+</div>
+
+<script>
+  function calculate() {
+    const checks = document.querySelectorAll('input[type="checkbox"]');
+    let score = 0;
+    checks.forEach(c => { if (c.checked) score++; });
+
+    const result = document.getElementById('result');
+    result.style.display = 'block';
+
+    if (score <= 8) {
+      result.className = "result low";
+      result.innerHTML = `
+        <h2>${score} баллов — к запуску ты не готов</h2>
+        <p>
+          В текущем состоянии запуск почти гарантированно приведёт
+          к стрессу и слабому результату.
+        </p>
+        <p>
+          Сейчас важно не запускаться, а выстроить базу
+          и понять правильный порядок шагов.
+        </p>
+        <a class="cta-button" href="https://t.me/Boris_Khodakov" target="_blank">
+          Напиши мне в Телеграм — подскажу точку роста и порядок шагов
+        </a>
+      `;
+    } 
+    else if (score <= 13) {
+      result.className = "result mid";
+      result.innerHTML = `
+        <h2>${score} баллов — база есть, но есть пробелы</h2>
+        <p>
+          В таком состоянии запуск без подготовки может дать слабый результат.
+          Зато с продюсером на этой базе можно собрать сильный запуск.
+        </p>
+        <a class="cta-button" href="https://t.me/Boris_Khodakov" target="_blank">
+          Напиши мне в Телеграм — помогу усилить базу и собрать запуск
+        </a>
+      `;
+    } 
+    else {
+      result.className = "result high";
+      result.innerHTML = `
+        <h2>${score} баллов — ты готов к запуску</h2>
+        <p>
+          Ты можешь сделать запуск самостоятельно.
+          Но с правильным продюсером всё проходит легче —
+          без перегруза маркетингом и лишней суеты.
+        </p>
+        <a class="cta-button" href="https://t.me/Boris_Khodakov" target="_blank">
+          Напиши мне в Телеграм — обсудим комфортный формат запуска
+        </a>
+      `;
+    }
+  }
+</script>
+
+</body>
+</html>
