@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Какая стратегия запуска подходит вам?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Фоновые декоративные элементы */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        .bg-circle:nth-child(4) {
+            width: 70px;
+            height: 70px;
+            top: 20%;
+            left: 85%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            33% {
+                transform: translateY(-30px) translateX(20px);
+            }
+            66% {
+                transform: translateY(-15px) translateX(-20px);
+            }
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .logo p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .question-container {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .question-text {
+            font-size: 22px;
+            color: #1f2937;
+            margin-bottom: 25px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            transition: width 0.3s ease;
+            z-index: 0;
+        }
+
+        .option:hover::before {
+            width: 100%;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+            background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+        }
+
+        .option-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .option-title {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .option-desc {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-prev {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .btn-prev:hover {
+            background: #e5e7eb;
+        }
+
+        .result-container {
+            display: none;
+            text-align: center;
+        }
+
+        .result-container.active {
+            display: block;
+            animation: fadeIn 0.7s ease;
+        }
+
+        .result-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .result-title {
+            font-size: 32px;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .result-subtitle {
+            font-size: 20px;
+            color: #1f2937;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .result-description {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 16px;
+            text-align: left;
+        }
+
+        .result-recommendations {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .result-recommendations h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .result-recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .result-recommendations li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            color: #374151;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .result-recommendations li:last-child {
+            border-bottom: none;
+        }
+
+        .result-recommendations li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 25px;
+            color: white;
+            margin-top: 25px;
+        }
+
+        .cta-section h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .cta-section p {
+            margin-bottom: 20px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .btn-cta {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .restart-btn {
+            margin-top: 20px;
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 25px;
+            }
+
+            .logo h1 {
+                font-size: 24px;
+            }
+
+            .question-text {
+                font-size: 18px;
+            }
+
+            .result-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="logo">
+                <h1>🚀 Стратегия запуска</h1>
+                <p>Узнайте, какой формат запуска принесёт максимальную выгоду</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+
+            <!-- Вопрос 1: Тип эксперта -->
+            <div class="question-container active" data-question="1">
+                <div class="question-number">Вопрос 1 из 5</div>
+                <div class="question-text">Какой тип эксперта вам ближе?</div>
+                <div class="options">
+                    <div class="option" data-value="charismatic">
+                        <div class="option-content">
+                            <div class="option-title">🔥 Харизматик</div>
+                            <div class="option-desc">Яркая личность, эмоциональный контент, люблю прямые эфиры и сторис</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="analyst">
+                        <div class="option-content">
+                            <div class="option-title">📊 Аналитик</div>
+                            <div class="option-desc">Структура, схемы, кейсы с цифрами — мой конёк</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="teacher">
+                        <div class="option-content">
+                            <div class="option-title">🎓 Учитель</div>
+                            <div class="option-desc">Мягко веду аудиторию шаг за шагом, забочусь о результате</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="visionary">
+                        <div class="option-content">
+                            <div class="option-title">✨ Визионер</div>
+                            <div class="option-desc">Вдохновляю идеями, работаю с трансформациями через истории</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 2: Тип продукта -->
+            <div class="question-container" data-question="2">
+                <div class="question-number">Вопрос 2 из 5</div>
+                <div class="question-text">Какой продукт вы хотите запустить?</div>
+                <div class="options">
+                    <div class="option" data-value="starter">
+                        <div class="option-content">
+                            <div class="option-title">🌱 Стартовый продукт</div>
+                            <div class="option-desc">Марафон, мини-курс, челлендж (до 10 000 ₽)</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="main">
+                        <div class="option-content">
+                            <div class="option-title">💼 Основной продукт</div>
+                            <div class="option-desc">Полноценная программа, коучинг (30 000 - 100 000 ₽)</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="premium">
+                        <div class="option-content">
+                            <div class="option-title">👑 Премиум-продукт</div>
+                            <div class="option-desc">Мастермайнд, VIP-наставничество (от 150 000 ₽)</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="evergreen">
+                        <div class="option-content">
+                            <div class="option-title">♾️ Evergreen</div>
+                            <div class="option-desc">Онлайн-школа, курс на постоянной основе</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 3: Уровень доверия аудитории -->
+            <div class="question-container" data-question="3">
+                <div class="question-number">Вопрос 3 из 5</div>
+                <div class="question-text">Как давно аудитория с вами знакома?</div>
+                <div class="options">
+                    <div class="option" data-value="cold">
+                        <div class="option-content">
+                            <div class="option-title">❄️ Холодная аудитория</div>
+                            <div class="option-desc">Только начинаю, подписчиков мало или они новые</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="warm">
+                        <div class="option-content">
+                            <div class="option-title">🔥 Тёплая аудитория</div>
+                            <div class="option-desc">Есть активная база, читают посты, реагируют на контент (3-6 месяцев)</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="hot">
+                        <div class="option-content">
+                            <div class="option-title">🌡️ Горячая аудитория</div>
+                            <div class="option-desc">Лояльные подписчики, покупали ранее, доверяют (6+ месяцев)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 4: Размер аудитории -->
+            <div class="question-container" data-question="4">
+                <div class="question-number">Вопрос 4 из 5</div>
+                <div class="question-text">Какой размер вашей целевой аудитории?</div>
+                <div class="options">
+                    <div class="option" data-value="small">
+                        <div class="option-content">
+                            <div class="option-title">📱 Малая (до 1000)</div>
+                            <div class="option-desc">Небольшое комьюнити, но качественное</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="medium">
+                        <div class="option-content">
+                            <div class="option-title">📊 Средняя (1000-10000)</div>
+                            <div class="option-desc">Стабильная база подписчиков</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="large">
+                        <div class="option-content">
+                            <div class="option-title">🎯 Большая (10000+)</div>
+                            <div class="option-desc">Широкий охват, много подписчиков</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вопрос 5: Опыт запусков -->
+            <div class="question-container" data-question="5">
+                <div class="question-number">Вопрос 5 из 5</div>
+                <div class="question-text">Ваш опыт в запусках?</div>
+                <div class="options">
+                    <div class="option" data-value="beginner">
+                        <div class="option-content">
+                            <div class="option-title">🆕 Новичок</div>
+                            <div class="option-desc">Это мой первый или второй запуск</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="intermediate">
+                        <div class="option-content">
+                            <div class="option-title">💪 Есть опыт</div>
+                            <div class="option-desc">Было 3-5 запусков, есть понимание процесса</div>
+                        </div>
+                    </div>
+                    <div class="option" data-value="expert">
+                        <div class="option-content">
+                            <div class="option-title">🏆 Эксперт</div>
+                            <div class="option-desc">Запускаюсь регулярно, хочу оптимизировать</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Результат -->
+            <div class="result-container" id="resultContainer">
+                <div class="result-icon" id="resultIcon"></div>
+                <div class="result-title" id="resultTitle"></div>
+                <div class="result-subtitle" id="resultSubtitle"></div>
+                <div class="result-description" id="resultDescription"></div>
+                
+                <div class="result-recommendations">
+                    <h3>📋 Ваш план действий:</h3>
+                    <ul id="recommendationsList"></ul>
+                </div>
+
+                <div class="cta-section">
+                    <h3>Готовы запустить стратегию?</h3>
+                    <p>Получите персональную консультацию и готовую дорожную карту запуска под ваш проект</p>
+                    <a href="https://t.me/boris_khodakov" target="_blank" style="text-decoration: none;">
+                        <button class="btn-cta">Записаться на консультацию</button>
+                    </a>
+                </div>
+
+                <button class="btn restart-btn" onclick="restartQuiz()">Пройти тест заново</button>
+            </div>
+
+            <div class="nav-buttons" id="navButtons">
+                <button class="btn btn-prev" id="prevBtn" onclick="previousQuestion()">Назад</button>
+                <button class="btn btn-next" id="nextBtn" onclick="nextQuestion()" disabled>Далее</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        const answers = {};
+
+        // Стратегии и рекомендации
+        const strategies = {
+            // Харизматик
+            'charismatic-starter-cold': {
+                icon: '🎬',
+                title: 'Live-марафон с вовлечением',
+                subtitle: 'Идеально для харизматичных экспертов со стартовым продуктом',
+                description: 'Ваша сила — в живом общении и эмоциях. Проведите 3-5 дневный марафон с ежедневными прямыми эфирами, где покажете свою экспертность и создадите эмоциональную связь с аудиторией.',
+                recommendations: [
+                    'Ежедневные живые эфиры по 30-60 минут',
+                    'Активное общение в комментариях и сторис',
+                    'Эмоциональные истории успеха участников',
+                    'Промо в последний день марафона с ограниченным предложением',
+                    'Цель: собрать 50-100 заявок на стартовый продукт'
+                ]
+            },
+            'charismatic-main-warm': {
+                icon: '🎯',
+                title: 'Прогрев через сторис + мини-вебинар',
+                subtitle: 'Максимум личного контакта и доверия',
+                description: 'Используйте серию эмоциональных сторис (7-10 дней прогрева) с кульминацией на вебинаре. Ваша харизма создаст нужный уровень вовлечённости для продажи основного продукта.',
+                recommendations: [
+                    '7-10 дней прогрева через daily-сторис',
+                    'Показывайте закулисье, процесс работы, результаты клиентов',
+                    'Финальный вебинар на 90-120 минут с продажей',
+                    'Личные созвоны с топ-лидами после вебинара',
+                    'Цель: конверсия 5-10% от тёплой аудитории'
+                ]
+            },
+            
+            // Аналитик
+            'analyst-main-warm': {
+                icon: '📊',
+                title: 'Классический вебинар с кейсами',
+                subtitle: 'Структура, цифры и доказательства',
+                description: 'Ваша сила — в логике и фактах. Проведите образовательный вебинар с разбором кейсов, схем и пошаговым планом. Покажите конкретные результаты в цифрах.',
+                recommendations: [
+                    'Серия из 3-4 образовательных постов перед вебинаром',
+                    'Вебинар 90-120 минут: 70% ценность, 30% продажа',
+                    'Презентация с чёткой структурой и кейсами',
+                    'Демонстрация ROI и метрик успеха',
+                    'FAQ-сессия для снятия возражений'
+                ]
+            },
+            'analyst-premium-hot': {
+                icon: '💎',
+                title: 'Персональная презентация + аудит',
+                subtitle: 'Премиум-подход для горячей аудитории',
+                description: 'Для премиум-продукта важна индивидуальность. Проведите персональные созвоны с предварительным аудитом ситуации клиента. Покажите конкретный план и ROI.',
+                recommendations: [
+                    'Анонс через личный пост о наборе в VIP-программу',
+                    'Предварительная анкета-фильтр для отбора клиентов',
+                    'Индивидуальный аудит перед созвоном (15-20 мин подготовки)',
+                    'Персональная презентация решения на созвоне (60 мин)',
+                    'Цель: закрыть 3-7 премиум-клиентов из 15-20 созвонов'
+                ]
+            },
+
+            // Учитель
+            'teacher-starter-cold': {
+                icon: '🎓',
+                title: 'Образовательный челлендж',
+                subtitle: '5-7 дней с результатом',
+                description: 'Проведите участников через структурированный путь с ежедневными заданиями. Создайте атмосферу заботы и поддержки. Результат участников — лучшая продажа.',
+                recommendations: [
+                    'Чёткая программа на 5-7 дней с ежедневными уроками',
+                    'Создайте чат для поддержки участников',
+                    'Проверка домашних заданий с обратной связью',
+                    'Публикация результатов участников',
+                    'Продажа основного курса в последний день со скидкой для участников'
+                ]
+            },
+            'teacher-main-warm': {
+                icon: '📚',
+                title: 'Серия мини-уроков + вебинар',
+                subtitle: 'Постепенное погружение в тему',
+                description: 'Проведите серию из 3-5 бесплатных мини-уроков, где дадите пользу и покажете свою методику. Завершите циклом на вебинаре с продажей полной программы.',
+                recommendations: [
+                    '3-5 бесплатных видео-уроков по 15-20 минут',
+                    'Домашние задания после каждого урока',
+                    'Комментирование и поддержка участников',
+                    'Итоговый вебинар с разбором сложных кейсов',
+                    'Бонусы для тех, кто выполнил все задания'
+                ]
+            },
+
+            // Визионер
+            'visionary-main-warm': {
+                icon: '✨',
+                title: 'Сторителлинг-запуск',
+                subtitle: 'Вдохновение через истории',
+                description: 'Постройте запуск вокруг трансформационной истории — вашей или клиента. Используйте метафоры и эмоциональное повествование для создания связи.',
+                recommendations: [
+                    'Серия постов-историй о трансформации (5-7 дней)',
+                    'Каждый пост — законченная история с выводом',
+                    'Использование метафор и визуальных образов',
+                    'Прямой эфир "от А до Я: история моего метода"',
+                    'Продажа через концепцию трансформации, а не функций'
+                ]
+            },
+            'visionary-premium-hot': {
+                icon: '🌟',
+                title: 'Закрытая презентация идеи',
+                subtitle: 'Эксклюзивное предложение для избранных',
+                description: 'Создайте ощущение элитарности и уникальности. Проведите закрытую презентацию вашей премиум-программы для ограниченного числа людей.',
+                recommendations: [
+                    'Личное приглашение топ-подписчиков в закрытую группу',
+                    'Презентация концепции и философии программы',
+                    'Истории трансформации существующих VIP-клиентов',
+                    'Закрытый вебинар только для приглашённых',
+                    'Ограниченное количество мест (создание дефицита)'
+                ]
+            },
+
+            // Evergreen стратегии
+            'evergreen-general': {
+                icon: '♾️',
+                title: 'Вечнозелёная воронка',
+                subtitle: 'Автоматизированные продажи 24/7',
+                description: 'Для evergreen-продукта создайте автоматическую воронку, которая работает постоянно. Используйте контент-маркетинг и автовебинары.',
+                recommendations: [
+                    'Лид-магнит для захвата аудитории (чек-лист, гайд, тест)',
+                    'Серия автоматических писем с прогревом (5-7 писем)',
+                    'Автовебинар или серия видео-уроков',
+                    'Трипваер-продукт (599-1990₽) для первой покупки',
+                    'Постоянный трафик через SEO, рекламу, блог'
+                ]
+            },
+
+            // Новичок стратегии
+            'beginner-starter': {
+                icon: '🚀',
+                title: 'Простой челлендж с базовой механикой',
+                subtitle: 'Начните с малого и протестируйте спрос',
+                description: 'Для первого запуска важна простота. Проведите короткий челлендж на 3-5 дней, соберите первых клиентов и отзывы. Это фундамент для будущих запусков.',
+                recommendations: [
+                    'Простая механика: одно задание в день',
+                    'Бесплатный телеграм-чат для участников',
+                    'Минимальная продакшн: можно даже текстовые посты',
+                    'Фокус на результате участников, не на красоте',
+                    'Цель: 20-50 участников и первые 5-10 продаж'
+                ]
+            }
+        };
+
+        // Функция определения стратегии
+        function determineStrategy() {
+            const expertType = answers.question1;
+            const productType = answers.question2;
+            const audienceTrust = answers.question3;
+            const audienceSize = answers.question4;
+            const experience = answers.question5;
+
+            // Логика для Evergreen
+            if (productType === 'evergreen') {
+                return strategies['evergreen-general'];
+            }
+
+            // Логика для новичков со стартовым продуктом
+            if (experience === 'beginner' && productType === 'starter') {
+                return strategies['beginner-starter'];
+            }
+
+            // Составная логика на основе типа эксперта и других параметров
+            const strategyKey = `${expertType}-${productType}-${audienceTrust}`;
+            
+            if (strategies[strategyKey]) {
+                return strategies[strategyKey];
+            }
+
+            // Фоллбэк стратегии для различных комбинаций
+            if (expertType === 'charismatic' && productType === 'starter') {
+                return strategies['charismatic-starter-cold'];
+            }
+            if (expertType === 'charismatic' && (productType === 'main' || productType === 'premium')) {
+                return strategies['charismatic-main-warm'];
+            }
+            if (expertType === 'analyst' && productType === 'main') {
+                return strategies['analyst-main-warm'];
+            }
+            if (expertType === 'analyst' && productType === 'premium') {
+                return strategies['analyst-premium-hot'];
+            }
+            if (expertType === 'teacher' && productType === 'starter') {
+                return strategies['teacher-starter-cold'];
+            }
+            if (expertType === 'teacher' && (productType === 'main' || productType === 'premium')) {
+                return strategies['teacher-main-warm'];
+            }
+            if (expertType === 'visionary' && productType === 'main') {
+                return strategies['visionary-main-warm'];
+            }
+            if (expertType === 'visionary' && productType === 'premium') {
+                return strategies['visionary-premium-hot'];
+            }
+
+            // Дефолтная стратегия
+            return strategies['teacher-main-warm'];
+        }
+
+        // Обработка выбора опции
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const container = this.closest('.question-container');
+                const questionNum = container.dataset.question;
+                
+                // Убираем выбор у других опций в этом вопросе
+                container.querySelectorAll('.option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Добавляем выбор текущей опции
+                this.classList.add('selected');
+                
+                // Сохраняем ответ
+                answers['question' + questionNum] = this.dataset.value;
+                
+                // Активируем кнопку "Далее"
+                document.getElementById('nextBtn').disabled = false;
+            });
+        });
+
+        // Следующий вопрос
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                // Скрываем текущий вопрос
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                
+                // Переходим к следующему
+                currentQuestion++;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                
+                // Обновляем прогресс-бар
+                updateProgress();
+                
+                // Деактивируем кнопку "Далее" если ответ не выбран
+                const hasAnswer = answers['question' + currentQuestion];
+                document.getElementById('nextBtn').disabled = !hasAnswer;
+                
+                // Показываем кнопку "Назад"
+                document.getElementById('prevBtn').style.display = 'block';
+                
+                // Проверяем, это последний вопрос
+                if (currentQuestion === totalQuestions) {
+                    document.getElementById('nextBtn').textContent = 'Узнать результат';
+                }
+            } else {
+                // Показываем результат
+                showResult();
+            }
+        }
+
+        // Предыдущий вопрос
+        function previousQuestion() {
+            if (currentQuestion > 1) {
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                currentQuestion--;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                updateProgress();
+                
+                document.getElementById('nextBtn').textContent = 'Далее';
+                document.getElementById('nextBtn').disabled = false;
+                
+                if (currentQuestion === 1) {
+                    document.getElementById('prevBtn').style.display = 'none';
+                }
+            }
+        }
+
+        // Обновление прогресс-бара
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Показать результат
+        function showResult() {
+            // Скрываем вопросы и навигацию
+            document.querySelectorAll('.question-container').forEach(q => q.classList.remove('active'));
+            document.getElementById('navButtons').style.display = 'none';
+            
+            // Получаем стратегию
+            const strategy = determineStrategy();
+            
+            // Заполняем результат
+            document.getElementById('resultIcon').textContent = strategy.icon;
+            document.getElementById('resultTitle').textContent = strategy.title;
+            document.getElementById('resultSubtitle').textContent = strategy.subtitle;
+            document.getElementById('resultDescription').textContent = strategy.description;
+            
+            // Заполняем рекомендации
+            const recList = document.getElementById('recommendationsList');
+            recList.innerHTML = '';
+            strategy.recommendations.forEach(rec => {
+                const li = document.createElement('li');
+                li.textContent = rec;
+                recList.appendChild(li);
+            });
+            
+            // Показываем результат
+            document.getElementById('resultContainer').classList.add('active');
+            
+            // Прогресс-бар на 100%
+            document.getElementById('progressBar').style.width = '100%';
+        }
+
+        // Начать тест заново
+        function restartQuiz() {
+            currentQuestion = 1;
+            Object.keys(answers).forEach(key => delete answers[key]);
+            
+            document.getElementById('resultContainer').classList.remove('active');
+            document.getElementById('navButtons').style.display = 'flex';
+            document.querySelector('[data-question="1"]').classList.add('active');
+            
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            
+            document.getElementById('nextBtn').textContent = 'Далее';
+            document.getElementById('nextBtn').disabled = true;
+            document.getElementById('prevBtn').style.display = 'none';
+            
+            updateProgress();
+        }
+
+        // Инициализация
+        document.getElementById('prevBtn').style.display = 'none';
+        updateProgress();
+    </script>
+</body>
+</html>
