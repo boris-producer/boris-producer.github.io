@@ -155,14 +155,15 @@
         }
 
         .about-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(59, 130, 246, 0.35);
             border-radius: 20px;
             padding: 40px;
             margin-bottom: 30px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.1);
         }
 
         .about-box::before {
@@ -174,18 +175,19 @@
             bottom: -2px;
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3));
             border-radius: 20px;
-            opacity: 0;
+            opacity: 0.5;
             transition: opacity 0.3s ease;
             z-index: -1;
         }
 
         .about-box:hover::before {
-            opacity: 1;
+            opacity: 0.7;
         }
 
         .about-box:hover {
-            background: rgba(255, 255, 255, 0.03);
-            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
         }
 
         .about-text {
@@ -209,12 +211,43 @@
         }
 
         .for-who-item {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(59, 130, 246, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(59, 130, 246, 0.4);
             border-radius: 15px;
             padding: 30px;
             transition: all 0.3s ease;
             position: relative;
+            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .for-who-item:nth-child(1) {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.02) 100%);
+        }
+
+        .for-who-item:nth-child(2) {
+            border-color: rgba(139, 92, 246, 0.5);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(139, 92, 246, 0.02) 100%);
+        }
+
+        .for-who-item:nth-child(3) {
+            border-color: rgba(236, 72, 153, 0.5);
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(236, 72, 153, 0.02) 100%);
+        }
+
+        .for-who-item:nth-child(4) {
+            border-color: rgba(245, 158, 11, 0.5);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.02) 100%);
+        }
+
+        .for-who-item:nth-child(5) {
+            border-color: rgba(34, 197, 94, 0.5);
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.08) 0%, rgba(34, 197, 94, 0.02) 100%);
+        }
+
+        .for-who-item:nth-child(6) {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.02) 100%);
         }
 
         .for-who-item::before {
@@ -222,20 +255,75 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            color: #3b82f6;
             font-size: 1.5em;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        .for-who-item:nth-child(1)::before {
+            color: rgba(59, 130, 246, 0.8);
+        }
+
+        .for-who-item:nth-child(2)::before {
+            color: rgba(139, 92, 246, 0.8);
+        }
+
+        .for-who-item:nth-child(3)::before {
+            color: rgba(236, 72, 153, 0.8);
+        }
+
+        .for-who-item:nth-child(4)::before {
+            color: rgba(245, 158, 11, 0.8);
+        }
+
+        .for-who-item:nth-child(5)::before {
+            color: rgba(34, 197, 94, 0.8);
+        }
+
+        .for-who-item:nth-child(6)::before {
+            color: rgba(59, 130, 246, 0.8);
         }
 
         .for-who-item:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            background: rgba(255, 255, 255, 0.04);
-            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.7);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.25);
+        }
+
+        .for-who-item:nth-child(1):hover {
+            border-color: rgba(59, 130, 246, 0.7);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .for-who-item:nth-child(2):hover {
+            border-color: rgba(139, 92, 246, 0.7);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .for-who-item:nth-child(3):hover {
+            border-color: rgba(236, 72, 153, 0.7);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+        }
+
+        .for-who-item:nth-child(4):hover {
+            border-color: rgba(245, 158, 11, 0.7);
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .for-who-item:nth-child(5):hover {
+            border-color: rgba(34, 197, 94, 0.7);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .for-who-item:nth-child(6):hover {
+            border-color: rgba(59, 130, 246, 0.7);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
         }
 
         .for-who-item:hover::before {
             opacity: 1;
+            transform: scale(1.2);
         }
 
         .for-who-item h3 {
@@ -257,48 +345,85 @@
 
         .work-step {
             display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-            align-items: flex-start;
+            gap: 35px;
+            margin-bottom: 25px;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.09);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            border-radius: 20px;
+            padding: 35px 40px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .work-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(147, 51, 234, 0.12) 100%);
+            opacity: 1;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .work-step:hover::before {
+            opacity: 1;
+        }
+
+        .work-step:hover {
+            background: rgba(255, 255, 255, 0.11);
+            border-color: rgba(59, 130, 246, 0.6);
+            transform: translateX(8px);
+            box-shadow: 0 10px 35px rgba(59, 130, 246, 0.3);
         }
 
         .step-number {
-            min-width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8em;
-            font-weight: 700;
-            color: white;
-            box-shadow: 0 5px 20px rgba(59, 130, 246, 0.3);
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10em;
+            font-weight: 900;
+            color: rgba(59, 130, 246, 0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            z-index: 0;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .work-step:hover .step-number {
+            color: rgba(59, 130, 246, 0.12);
+            transform: translateY(-50%) scale(1.05);
         }
 
         .step-content {
             flex: 1;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            border-radius: 15px;
-            padding: 25px 30px;
-            transition: all 0.3s ease;
-        }
-
-        .step-content:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-            background: rgba(255, 255, 255, 0.04);
+            position: relative;
+            z-index: 2;
         }
 
         .step-content h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-size: 1.3em;
+            color: #5b9df6;
+            margin-bottom: 12px;
+            font-size: 1.35em;
+            font-weight: 600;
+            transition: color 0.4s ease;
+        }
+
+        .work-step:hover .step-content h3 {
+            color: #7db5ff;
         }
 
         .step-content p {
-            color: #a0a0a0;
+            color: #b5b5b5;
             line-height: 1.7;
+            font-size: 1.05em;
         }
 
         /* Social Links */
@@ -517,6 +642,11 @@
                 gap: 20px;
             }
 
+            .step-number {
+                font-size: 6em;
+                right: 10px;
+            }
+
             .materials-grid {
                 grid-template-columns: 1fr;
             }
@@ -524,26 +654,8 @@
 
         /* Smooth Scroll */
         html {
-    scroll-behavior: smooth;
-}
-
-
-/* ===== MOBILE ACTIVE STATES ===== */
-@media (hover: none) {
-
-    .material-card,
-    .for-who-item,
-    .about-box,
-    .social-link,
-    .step-content {
-
-        border-color: rgba(59, 130, 246, 0.5);
-        background: rgba(59, 130, 246, 0.05);
-        transform: none;
-    }
-
-}
-
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 <body>
@@ -688,6 +800,25 @@
     			<span class="material-emoji">🔮</span>
    			<div class="material-title">Ты готов к работе со мной?</div>
 		</a>
+                <a href="strategy.html" class="material-card">
+                    <span class="material-emoji">🎯</span>
+                    <div class="material-title">Узнай свою стратегию запуска</div>
+                </a>
+                <div class="material-card coming-soon">
+                    <span class="material-emoji">📊</span>
+                    <div class="material-title">Анализ твоего продукта</div>
+                    <span class="coming-soon-badge">Скоро появится</span>
+                </div>
+                <div class="material-card coming-soon">
+                    <span class="material-emoji">🎬</span>
+                    <div class="material-title">Конструктор прогрева</div>
+                    <span class="coming-soon-badge">Скоро появится</span>
+                </div>
+                <div class="material-card coming-soon">
+                    <span class="material-emoji">📈</span>
+                    <div class="material-title">Калькулятор запуска</div>
+                    <span class="coming-soon-badge">Скоро появится</span>
+                </div>
             </div>
         </div>
     </section>
