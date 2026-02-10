@@ -1,0 +1,490 @@
+<!DOCTYPE html> <html> <head> <meta charset="utf-8" /> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!--metatextblock--> <title>Декомпозиция</title> <meta property="og:url" content="https://timochko.ru/decomposition" /> <meta property="og:title" content="Декомпозиция" /> <meta property="og:description" content="" /> <meta property="og:type" content="website" /> <link rel="canonical" href="https://timochko.ru/decomposition"> <!--/metatextblock--> <meta name="format-detection" content="telephone=no" /> <meta http-equiv="x-dns-prefetch-control" content="on"> <link rel="dns-prefetch" href="https://ws.tildacdn.com"> <link rel="dns-prefetch" href="https://static.tildacdn.com"> <link rel="shortcut icon" href="https://static.tildacdn.com/tild3232-6636-4337-b063-643564636165/Frame_32.png" type="image/x-icon" /> <link rel="apple-touch-icon" href="https://static.tildacdn.com/tild3462-3031-4130-b537-346439363331/favicon-1.png"> <link rel="apple-touch-icon" sizes="76x76" href="https://static.tildacdn.com/tild3462-3031-4130-b537-346439363331/favicon-1.png"> <link rel="apple-touch-icon" sizes="152x152" href="https://static.tildacdn.com/tild3462-3031-4130-b537-346439363331/favicon-1.png"> <link rel="apple-touch-startup-image" href="https://static.tildacdn.com/tild3462-3031-4130-b537-346439363331/favicon-1.png"> <meta name="msapplication-TileColor" content="#1f1f1f"> <meta name="msapplication-TileImage" content="https://static.tildacdn.com/tild6532-3038-4666-a330-373439643938/favicon.png"> <!-- Assets --> <script src="https://neo.tildacdn.com/js/tilda-fallback-1.0.min.js" async charset="utf-8"></script> <link rel="stylesheet" href="https://static.tildacdn.com/css/tilda-grid-3.0.min.css" type="text/css" media="all" onerror="this.loaderr='y';"/> <link rel="stylesheet" href="https://static.tildacdn.com/ws/project4123431/tilda-blocks-page72909325.min.css?t=1753444900" type="text/css" media="all" onerror="this.loaderr='y';" /> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900" type="text/css" /> <script nomodule src="https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js" charset="utf-8"></script> <script type="text/javascript">function t_onReady(func) {if(document.readyState!='loading') {func();} else {document.addEventListener('DOMContentLoaded',func);}}
+function t_onFuncLoad(funcName,okFunc,time) {if(typeof window[funcName]==='function') {okFunc();} else {setTimeout(function() {t_onFuncLoad(funcName,okFunc,time);},(time||100));}}</script> <script src="https://static.tildacdn.com/js/jquery-1.10.2.min.js" charset="utf-8" onerror="this.loaderr='y';"></script> <script src="https://static.tildacdn.com/js/tilda-scripts-3.0.min.js" charset="utf-8" defer onerror="this.loaderr='y';"></script> <script src="https://static.tildacdn.com/ws/project4123431/tilda-blocks-page72909325.min.js?t=1753444900" charset="utf-8" async onerror="this.loaderr='y';"></script> <script src="https://static.tildacdn.com/js/tilda-lazyload-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script> <script src="https://static.tildacdn.com/js/tilda-events-1.0.min.js" charset="utf-8" async onerror="this.loaderr='y';"></script> <script type="text/javascript">window.dataLayer=window.dataLayer||[];</script> <script type="text/javascript">(function() {if((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(navigator.userAgent))===false&&typeof(sessionStorage)!='undefined'&&sessionStorage.getItem('visited')!=='y'&&document.visibilityState){var style=document.createElement('style');style.type='text/css';style.innerHTML='@media screen and (min-width: 980px) {.t-records {opacity: 0;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}';document.getElementsByTagName('head')[0].appendChild(style);function t_setvisRecs(){var alr=document.querySelectorAll('.t-records');Array.prototype.forEach.call(alr,function(el) {el.classList.add("t-records_animated");});setTimeout(function() {Array.prototype.forEach.call(alr,function(el) {el.classList.add("t-records_visible");});sessionStorage.setItem("visited","y");},400);}
+document.addEventListener('DOMContentLoaded',t_setvisRecs);}})();</script></head> <body class="t-body" style="margin:0;"> <!--allrecords--> <div id="allrecords" class="t-records" data-hook="blocks-collection-content-node" data-tilda-project-id="4123431" data-tilda-page-id="72909325" data-tilda-page-alias="decomposition" data-tilda-formskey="f35d99855a41678d474e151965a8c3d8" data-tilda-stat-scroll="yes" data-tilda-lazy="yes" data-tilda-root-zone="com" data-tilda-ts="y" data-tilda-project-country="RU"> <div id="rec1184667881" class="r t-rec" style=" " data-animationappear="off" data-record-type="131"> <!-- T123 --> <div class="t123"> <div class="t-container_100 "> <div class="t-width t-width_100 "> <!-- nominify begin --> <!DOCTYPE html> <html lang="ru"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Калькулятор запуска</title> <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Roboto', sans-serif;
+            background: #F5F5F5;
+            line-height: 1.6;
+            color: #000000;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+        }
+
+        /* Hero секция */
+        .hero-section {
+            background: #000000;
+            color: #FFFFFF;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Контент */
+        .content {
+            padding: 60px 40px;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 40px;
+            margin: 0 auto;
+        }
+
+        .model-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 2px solid #F5F5F5;
+            transition: all 0.3s ease;
+        }
+
+        .model-card:hover {
+            border-color: #00D4AA;
+            transform: translateY(-5px);
+        }
+
+        .model-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #000000;
+            text-align: center;
+        }
+
+        .model-subtitle {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #F5F5F5;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            background: #FAFAFA;
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #00D4AA;
+            background: white;
+        }
+
+        .funnel-step {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: #F8F9FA;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .funnel-step:hover {
+            background: #F0F0F0;
+        }
+
+        .step-label {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            flex: 1;
+        }
+
+        .step-values {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: right;
+            min-width: 140px;
+        }
+
+        .scenario-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .scenario-percent {
+            font-weight: 700;
+            min-width: 30px;
+        }
+
+        .scenario-count {
+            font-weight: 500;
+            opacity: 0.8;
+            font-size: 12px;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        .scenario-bad { color: #FF6B6B; }
+        .scenario-avg { color: #FFB74D; }
+        .scenario-good { color: #4CAF50; }
+
+        .results-section {
+            background: #000000;
+            color: #FFFFFF;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .results-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #333;
+        }
+
+        .result-bad {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: #FF6B6B;
+        }
+
+        .result-avg {
+            background: rgba(255, 183, 77, 0.1);
+            border-color: #FFB74D;
+        }
+
+        .result-good {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: #4CAF50;
+        }
+
+        .result-main {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .result-label {
+            font-size: 14px;
+            opacity: 0.8;
+            min-width: 100px;
+            text-align: left;
+        }
+
+        .result-value {
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .result-count {
+            font-size: 12px;
+            opacity: 0.6;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .models-grid {
+                grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 20px;
+            }
+            
+            .content {
+                padding: 40px 20px;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .step-values {
+                min-width: 120px;
+            }
+
+            .scenario-item {
+                gap: 8px;
+            }
+
+            .scenario-count {
+                font-size: 11px;
+                min-width: 40px;
+            }
+
+            .result-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .result-main {
+                justify-content: space-between;
+            }
+
+            .result-count {
+                text-align: right;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .model-card {
+                padding: 20px;
+            }
+
+            .step-values {
+                min-width: 100px;
+            }
+
+            .scenario-percent {
+                min-width: 25px;
+            }
+
+            .result-value {
+                font-size: 18px;
+            }
+        }
+
+        /* Анимации */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .model-card {
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .model-card:nth-child(1) { animation-delay: 0.1s; }
+        .model-card:nth-child(2) { animation-delay: 0.2s; }
+        .model-card:nth-child(3) { animation-delay: 0.3s; }
+    </style> </head> <body> <div class="container"> <!-- Hero секция --> <div class="hero-section"> <div class="hero-subtitle">Формула Запуска</div> <h1 class="hero-title">Калькулятор запуска</h1> <div class="hero-description">
+                Рассчитай потенциальную выручку в трех сценариях: пессимистичном, среднем и оптимистичном
+            </div> </div> <!-- Контент --> <div class="content"> <div class="models-grid"> <!-- Простой калькулятор --> <div class="model-card"> <h2 class="model-title">Простой расчет</h2> <div class="model-subtitle">Базовая модель: охваты → продажи</div> <div class="input-group"> <label for="simple-reach" class="input-label">Охваты</label> <input type="number" id="simple-reach" class="input-field" value="13000" placeholder="Введите количество"> </div> <div class="input-group"> <label for="simple-price" class="input-label">Средний чек (₽)</label> <input type="number" id="simple-price" class="input-field" value="700" placeholder="Введите сумму"> </div> <div class="funnel-step"> <span class="step-label">Конверсия в продажи</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">1%</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">3%</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">5%</span> </div> </div> </div> <div class="results-section"> <h3 class="results-title">Потенциальная выручка</h3> <div class="result-item result-bad"> <div class="result-main"> <div class="result-label">Пессимистично</div> <div class="result-value" id="simple-bad">91 000₽</div> </div> <div class="result-count" id="simple-bad-count">130 продаж</div> </div> <div class="result-item result-avg"> <div class="result-main"> <div class="result-label">Средне</div> <div class="result-value" id="simple-avg">273 000₽</div> </div> <div class="result-count" id="simple-avg-count">390 продаж</div> </div> <div class="result-item result-good"> <div class="result-main"> <div class="result-label">Оптимистично</div> <div class="result-value" id="simple-good">455 000₽</div> </div> <div class="result-count" id="simple-good-count">650 продаж</div> </div> </div> </div> <!-- Вебинарная модель --> <div class="model-card"> <h2 class="model-title">Вебинарная модель</h2> <div class="model-subtitle">Полный цикл через вебинар</div> <div class="input-group"> <label for="webinar-subs" class="input-label">Подписчики</label> <input type="number" id="webinar-subs" class="input-field" value="50000" placeholder="Введите количество"> </div> <div class="input-group"> <label for="webinar-price" class="input-label">Средний чек (₽)</label> <input type="number" id="webinar-price" class="input-field" value="100000" placeholder="Введите сумму"> </div> <div class="funnel-step"> <span class="step-label">Охваты от подписчиков</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">5%</span> <span class="scenario-count" id="webinar-reach-bad">2500</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">10%</span> <span class="scenario-count" id="webinar-reach-avg">5000</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">20%</span> <span class="scenario-count" id="webinar-reach-good">10000</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Регистрации на вебинар</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">10%</span> <span class="scenario-count" id="webinar-regs-bad">250</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">20%</span> <span class="scenario-count" id="webinar-regs-avg">1000</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">30%</span> <span class="scenario-count" id="webinar-regs-good">3000</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Зрители в пике</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">25%</span> <span class="scenario-count" id="webinar-viewers-bad">63</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">40%</span> <span class="scenario-count" id="webinar-viewers-avg">400</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">55%</span> <span class="scenario-count" id="webinar-viewers-good">1650</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Заявки с вебинара</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">15%</span> <span class="scenario-count" id="webinar-leads-bad">9</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">22%</span> <span class="scenario-count" id="webinar-leads-avg">88</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">35%</span> <span class="scenario-count" id="webinar-leads-good">578</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Полные оплаты</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">50%</span> <span class="scenario-count" id="webinar-sales-bad">5</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">70%</span> <span class="scenario-count" id="webinar-sales-avg">62</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">90%</span> <span class="scenario-count" id="webinar-sales-good">520</span> </div> </div> </div> <div class="results-section"> <h3 class="results-title">Потенциальная выручка</h3> <div class="result-item result-bad"> <div class="result-main"> <div class="result-label">Пессимистично</div> <div class="result-value" id="webinar-bad">500 000₽</div> </div> <div class="result-count" id="webinar-bad-count">5 продаж</div> </div> <div class="result-item result-avg"> <div class="result-main"> <div class="result-label">Средне</div> <div class="result-value" id="webinar-avg">6 160 000₽</div> </div> <div class="result-count" id="webinar-avg-count">62 продажи</div> </div> <div class="result-item result-good"> <div class="result-main"> <div class="result-label">Оптимистично</div> <div class="result-value" id="webinar-good">52 000 000₽</div> </div> <div class="result-count" id="webinar-good-count">520 продаж</div> </div> </div> </div> <!-- Личные продажи --> <div class="model-card"> <h2 class="model-title">Личные продажи</h2> <div class="model-subtitle">Индивидуальная работа с клиентами</div> <div class="input-group"> <label for="personal-subs" class="input-label">Подписчики</label> <input type="number" id="personal-subs" class="input-field" value="9000" placeholder="Введите количество"> </div> <div class="input-group"> <label for="personal-price" class="input-label">Средний чек (₽)</label> <input type="number" id="personal-price" class="input-field" value="40000" placeholder="Введите сумму"> </div> <div class="funnel-step"> <span class="step-label">Охваты от подписчиков</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">5%</span> <span class="scenario-count" id="personal-reach-bad">450</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">10%</span> <span class="scenario-count" id="personal-reach-avg">900</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">20%</span> <span class="scenario-count" id="personal-reach-good">1800</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Анкеты предзаписи</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">5%</span> <span class="scenario-count" id="personal-forms-bad">23</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">15%</span> <span class="scenario-count" id="personal-forms-avg">135</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">25%</span> <span class="scenario-count" id="personal-forms-good">450</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Переписка</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">60%</span> <span class="scenario-count" id="personal-chats-bad">14</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">75%</span> <span class="scenario-count" id="personal-chats-avg">101</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">90%</span> <span class="scenario-count" id="personal-chats-good">405</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">ZOOM-звонки</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">50%</span> <span class="scenario-count" id="personal-zooms-bad">7</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">70%</span> <span class="scenario-count" id="personal-zooms-avg">71</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">85%</span> <span class="scenario-count" id="personal-zooms-good">344</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Предоплаты</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">30%</span> <span class="scenario-count" id="personal-prepay-bad">2</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">50%</span> <span class="scenario-count" id="personal-prepay-avg">35</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">65%</span> <span class="scenario-count" id="personal-prepay-good">224</span> </div> </div> </div> <div class="funnel-step"> <span class="step-label">Полные оплаты</span> <div class="step-values"> <div class="scenario-item"> <span class="scenario-percent scenario-bad">70%</span> <span class="scenario-count" id="personal-sales-bad">1</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-avg">80%</span> <span class="scenario-count" id="personal-sales-avg">28</span> </div> <div class="scenario-item"> <span class="scenario-percent scenario-good">90%</span> <span class="scenario-count" id="personal-sales-good">201</span> </div> </div> </div> <div class="results-section"> <h3 class="results-title">Потенциальная выручка</h3> <div class="result-item result-bad"> <div class="result-main"> <div class="result-label">Пессимистично</div> <div class="result-value" id="personal-bad">40 000₽</div> </div> <div class="result-count" id="personal-bad-count">1 продажа</div> </div> <div class="result-item result-avg"> <div class="result-main"> <div class="result-label">Средне</div> <div class="result-value" id="personal-avg">1 120 000₽</div> </div> <div class="result-count" id="personal-avg-count">28 продаж</div> </div> <div class="result-item result-good"> <div class="result-main"> <div class="result-label">Оптимистично</div> <div class="result-value" id="personal-good">8 040 000₽</div> </div> <div class="result-count" id="personal-good-count">201 продажа</div> </div> </div> </div> </div> </div> </div> <script>
+        function formatNumber(num) {
+            return new Intl.NumberFormat('ru-RU').format(Math.round(num));
+        }
+
+        function calculateSimple() {
+            const reach = parseInt(document.getElementById('simple-reach').value) || 0;
+            const price = parseInt(document.getElementById('simple-price').value) || 0;
+            
+            const salesBad = reach * 0.01;
+            const salesAvg = reach * 0.03;
+            const salesGood = reach * 0.05;
+            
+            document.getElementById('simple-bad').textContent = formatNumber(salesBad * price) + '₽';
+            document.getElementById('simple-avg').textContent = formatNumber(salesAvg * price) + '₽';
+            document.getElementById('simple-good').textContent = formatNumber(salesGood * price) + '₽';
+            
+            document.getElementById('simple-bad-count').textContent = formatNumber(salesBad) + ' продаж';
+            document.getElementById('simple-avg-count').textContent = formatNumber(salesAvg) + ' продаж';
+            document.getElementById('simple-good-count').textContent = formatNumber(salesGood) + ' продаж';
+        }
+
+        function calculateWebinar() {
+            const subs = parseInt(document.getElementById('webinar-subs').value) || 0;
+            const price = parseInt(document.getElementById('webinar-price').value) || 0;
+            
+            // Пессимистичный сценарий
+            const reachBad = subs * 0.05;
+            const regsBad = reachBad * 0.10;
+            const viewersBad = regsBad * 0.25;
+            const leadsBad = viewersBad * 0.15;
+            const salesBad = leadsBad * 0.50;
+            
+            // Средний сценарий
+            const reachAvg = subs * 0.10;
+            const regsAvg = reachAvg * 0.20;
+            const viewersAvg = regsAvg * 0.40;
+            const leadsAvg = viewersAvg * 0.22;
+            const salesAvg = leadsAvg * 0.70;
+            
+            // Оптимистичный сценарий
+            const reachGood = subs * 0.20;
+            const regsGood = reachGood * 0.30;
+            const viewersGood = regsGood * 0.55;
+            const leadsGood = viewersGood * 0.35;
+            const salesGood = leadsGood * 0.90;
+            
+            // Обновляем воронку
+            document.getElementById('webinar-reach-bad').textContent = formatNumber(reachBad);
+            document.getElementById('webinar-reach-avg').textContent = formatNumber(reachAvg);
+            document.getElementById('webinar-reach-good').textContent = formatNumber(reachGood);
+            
+            document.getElementById('webinar-regs-bad').textContent = formatNumber(regsBad);
+            document.getElementById('webinar-regs-avg').textContent = formatNumber(regsAvg);
+            document.getElementById('webinar-regs-good').textContent = formatNumber(regsGood);
+            
+            document.getElementById('webinar-viewers-bad').textContent = formatNumber(viewersBad);
+            document.getElementById('webinar-viewers-avg').textContent = formatNumber(viewersAvg);
+            document.getElementById('webinar-viewers-good').textContent = formatNumber(viewersGood);
+            
+            document.getElementById('webinar-leads-bad').textContent = formatNumber(leadsBad);
+            document.getElementById('webinar-leads-avg').textContent = formatNumber(leadsAvg);
+            document.getElementById('webinar-leads-good').textContent = formatNumber(leadsGood);
+            
+            document.getElementById('webinar-sales-bad').textContent = formatNumber(salesBad);
+            document.getElementById('webinar-sales-avg').textContent = formatNumber(salesAvg);
+            document.getElementById('webinar-sales-good').textContent = formatNumber(salesGood);
+            
+            // Обновляем результаты
+            document.getElementById('webinar-bad').textContent = formatNumber(salesBad * price) + '₽';
+            document.getElementById('webinar-avg').textContent = formatNumber(salesAvg * price) + '₽';
+            document.getElementById('webinar-good').textContent = formatNumber(salesGood * price) + '₽';
+            
+            document.getElementById('webinar-bad-count').textContent = formatNumber(salesBad) + ' продаж';
+            document.getElementById('webinar-avg-count').textContent = formatNumber(salesAvg) + ' продаж';
+            document.getElementById('webinar-good-count').textContent = formatNumber(salesGood) + ' продаж';
+        }
+
+        function calculatePersonal() {
+            const subs = parseInt(document.getElementById('personal-subs').value) || 0;
+            const price = parseInt(document.getElementById('personal-price').value) || 0;
+            
+            // Пессимистичный сценарий
+            const reachBad = subs * 0.05;
+            const formsBad = reachBad * 0.05;
+            const chatsBad = formsBad * 0.60;
+            const zoomsBad = chatsBad * 0.50;
+            const prepayBad = zoomsBad * 0.30;
+            const salesBad = prepayBad * 0.70;
+            
+            // Средний сценарий
+            const reachAvg = subs * 0.10;
+            const formsAvg = reachAvg * 0.15;
+            const chatsAvg = formsAvg * 0.75;
+            const zoomsAvg = chatsAvg * 0.70;
+            const prepayAvg = zoomsAvg * 0.50;
+            const salesAvg = prepayAvg * 0.80;
+            
+            // Оптимистичный сценарий
+            const reachGood = subs * 0.20;
+            const formsGood = reachGood * 0.25;
+            const chatsGood = formsGood * 0.90;
+            const zoomsGood = chatsGood * 0.85;
+            const prepayGood = zoomsGood * 0.65;
+            const salesGood = prepayGood * 0.90;
+            
+            // Обновляем воронку
+            document.getElementById('personal-reach-bad').textContent = formatNumber(reachBad);
+            document.getElementById('personal-reach-avg').textContent = formatNumber(reachAvg);
+            document.getElementById('personal-reach-good').textContent = formatNumber(reachGood);
+            
+            document.getElementById('personal-forms-bad').textContent = formatNumber(formsBad);
+            document.getElementById('personal-forms-avg').textContent = formatNumber(formsAvg);
+            document.getElementById('personal-forms-good').textContent = formatNumber(formsGood);
+            
+            document.getElementById('personal-chats-bad').textContent = formatNumber(chatsBad);
+            document.getElementById('personal-chats-avg').textContent = formatNumber(chatsAvg);
+            document.getElementById('personal-chats-good').textContent = formatNumber(chatsGood);
+            
+            document.getElementById('personal-zooms-bad').textContent = formatNumber(zoomsBad);
+            document.getElementById('personal-zooms-avg').textContent = formatNumber(zoomsAvg);
+            document.getElementById('personal-zooms-good').textContent = formatNumber(zoomsGood);
+            
+            document.getElementById('personal-prepay-bad').textContent = formatNumber(prepayBad);
+            document.getElementById('personal-prepay-avg').textContent = formatNumber(prepayAvg);
+            document.getElementById('personal-prepay-good').textContent = formatNumber(prepayGood);
+            
+            document.getElementById('personal-sales-bad').textContent = formatNumber(salesBad);
+            document.getElementById('personal-sales-avg').textContent = formatNumber(salesAvg);
+            document.getElementById('personal-sales-good').textContent = formatNumber(salesGood);
+            
+            // Обновляем результаты
+            document.getElementById('personal-bad').textContent = formatNumber(salesBad * price) + '₽';
+            document.getElementById('personal-avg').textContent = formatNumber(salesAvg * price) + '₽';
+            document.getElementById('personal-good').textContent = formatNumber(salesGood * price) + '₽';
+            
+            document.getElementById('personal-bad-count').textContent = formatNumber(salesBad) + ' продаж';
+            document.getElementById('personal-avg-count').textContent = formatNumber(salesAvg) + ' продаж';
+            document.getElementById('personal-good-count').textContent = formatNumber(salesGood) + ' продаж';
+        }
+
+        // Обработчики событий
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('simple-reach').addEventListener('input', calculateSimple);
+            document.getElementById('simple-price').addEventListener('input', calculateSimple);
+            
+            document.getElementById('webinar-subs').addEventListener('input', calculateWebinar);
+            document.getElementById('webinar-price').addEventListener('input', calculateWebinar);
+            
+            document.getElementById('personal-subs').addEventListener('input', calculatePersonal);
+            document.getElementById('personal-price').addEventListener('input', calculatePersonal);
+
+            // Первоначальный расчет при загрузке страницы
+            calculateSimple();
+            calculateWebinar();
+            calculatePersonal();
+        });
+    </script> </body> </html> <!-- nominify end --> </div> </div> </div> </div> </div> <!--/allrecords--> <!-- Stat --> <script type="text/javascript">if(!window.mainTracker) {window.mainTracker='tilda';}
+window.tildastatscroll='yes';setTimeout(function(){(function(d,w,k,o,g) {var n=d.getElementsByTagName(o)[0],s=d.createElement(o),f=function(){n.parentNode.insertBefore(s,n);};s.type="text/javascript";s.async=true;s.key=k;s.id="tildastatscript";s.src=g;if(w.opera=="[object Opera]") {d.addEventListener("DOMContentLoaded",f,false);} else {f();}})(document,window,'e612eb610083473471430197758c6caf','script','https://static.tildacdn.com/js/tilda-stat-1.0.min.js');},2000);</script> </body> </html>
